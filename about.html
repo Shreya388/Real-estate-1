@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Elysian Estate Consultants</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: #caa45d;
+            color: white;
+        }
+
+        .gold-line {
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #caa45d,
+                transparent
+            );
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8f7f4] text-[#171717]">
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
+
+    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 h-[60px] flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3">
+
+            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
+                <span class="text-[#caa45d] text-[16px]">♛</span>
+            </div>
+
+            <div>
+                <div class="serif text-[22px] tracking-[2px] leading-none">
+                    ELYSIAN
+                </div>
+
+                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
+                    ESTATE CONSULTANTS
+                </div>
+            </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation -->
+
+        <nav class="hidden lg:flex items-center gap-7 text-[12px] tracking-[1px] font-medium">
+
+            <a href="#" class="text-[#caa45d]">HOME</a>
+            <a href="#" class="hover:text-[#caa45d] transition">PROPERTIES</a>
+            <a href="#" class="hover:text-[#caa45d] transition">BUY</a>
+            <a href="#" class="hover:text-[#caa45d] transition">RENT</a>
+            <a href="#" class="hover:text-[#caa45d] transition">SELL</a>
+            <a href="#" class="text-[#caa45d]">ABOUT</a>
+            <a href="#" class="hover:text-[#caa45d] transition">SERVICES</a>
+            <a href="#" class="hover:text-[#caa45d] transition">LOCATIONS</a>
+            <a href="#" class="hover:text-[#caa45d] transition">CONTACT</a>
+
+            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
+
+            <a href="#contact"
+               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
+                SCHEDULE A VISIT
+            </a>
+
+        </nav>
+
+
+        <!-- Mobile Menu -->
+
+        <button id="menuBtn" class="lg:hidden">
+            <i data-lucide="menu"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Mobile Navigation -->
+
+    <div id="mobileMenu"
+         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
+
+        <div class="flex flex-col gap-5 text-sm tracking-wide">
+
+            <a href="#">HOME</a>
+            <a href="#">PROPERTIES</a>
+            <a href="#">BUY</a>
+            <a href="#">RENT</a>
+            <a href="#">SELL</a>
+            <a href="#" class="text-[#caa45d]">ABOUT</a>
+            <a href="#">SERVICES</a>
+            <a href="#">LOCATIONS</a>
+            <a href="#">CONTACT</a>
+
+            <a href="#contact"
+               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
+                SCHEDULE A VISIT
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="relative min-h-[650px] pt-[60px] flex items-center overflow-hidden">
+
+    <!-- Background Image -->
+
+    <div class="absolute inset-0">
+
+        <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85"
+            class="w-full h-full object-cover"
+            alt="Luxury Interior"
+        >
+
+        <div class="absolute inset-0 bg-black/55"></div>
+
+    </div>
+
+
+    <div class="relative z-10 max-w-[1050px] mx-auto px-6 text-center text-white">
+
+        <div
+            data-aos="fade-up"
+            data-aos-duration="900"
+            class="text-[#caa45d] uppercase tracking-[5px] text-[11px] font-medium mb-6">
+            The Elysian Story
+        </div>
+
+        <h1
+            data-aos="fade-up"
+            data-aos-delay="150"
+            class="serif text-6xl md:text-8xl leading-[.9] font-medium">
+            We Define<br>
+            <span class="italic">Exceptional Living.</span>
+        </h1>
+
+        <p
+            data-aos="fade-up"
+            data-aos-delay="300"
+            class="max-w-[650px] mx-auto mt-8 text-gray-200 leading-7 text-sm md:text-base">
+            Elysian Estate Consultants is a luxury real estate advisory
+            firm built around one simple belief: exceptional homes deserve
+            exceptional guidance.
+        </p>
+
+        <div
+            data-aos="fade-up"
+            data-aos-delay="450"
+            class="mt-10">
+
+            <a href="#story"
+               class="inline-flex items-center gap-3 border border-white/40
+                      px-7 py-4 rounded-full text-xs tracking-[1.5px]
+                      hover:bg-white hover:text-black transition">
+
+                DISCOVER OUR STORY
+
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section id="story" class="py-28 bg-white">
+
+    <div class="max-w-[1090px] mx-auto px-6">
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+            <!-- Image -->
+
+            <div
+                data-aos="fade-right"
+                class="relative">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                    class="w-full h-[550px] object-cover"
+                    alt="Luxury Residence"
+                >
+
+                <div class="absolute -bottom-8 -right-8
+                            bg-[#171717] text-white
+                            w-[190px] h-[190px]
+                            flex flex-col justify-center items-center">
+
+                    <div class="serif text-5xl text-[#caa45d]">
+                        15+
+                    </div>
+
+                    <div class="uppercase text-[9px]
+                                tracking-[2px] mt-2 text-gray-400">
+                        Years of Excellence
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Content -->
+
+            <div data-aos="fade-left">
+
+                <div class="text-[#caa45d] text-[11px]
+                            tracking-[4px] font-medium mb-5">
+                    WHO WE ARE
+                </div>
+
+                <h2 class="serif text-5xl md:text-6xl leading-[1] mb-7">
+                    Real Estate,
+                    <br>
+                    <span class="italic">Reimagined.</span>
+                </h2>
+
+                <p class="text-gray-500 leading-7 text-sm mb-6">
+                    Elysian Estate Consultants was founded with a vision to
+                    bring a more considered, transparent and sophisticated
+                    approach to luxury real estate in India.
+                </p>
+
+                <p class="text-gray-500 leading-7 text-sm mb-8">
+                    From landmark residences and private villas to
+                    investment-grade commercial assets, our advisory team
+                    works closely with discerning buyers, sellers and
+                    investors to create decisions that stand the test of time.
+                </p>
+
+                <div class="flex items-center gap-4">
+
+                    <div class="w-12 h-[1px] bg-[#caa45d]"></div>
+
+                    <span class="uppercase text-[10px]
+                                 tracking-[2px] text-[#777]">
+                        Built on trust
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STATISTICS
+========================================================= -->
+
+<section class="bg-[#171717] text-white py-20">
+
+    <div class="max-w-[1050px] mx-auto px-6">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4">
+
+            <div
+                data-aos="fade-up"
+                class="text-center py-8 border-r border-white/10">
+
+                <div class="serif text-5xl text-[#caa45d]">
+                    ₹500+
+                </div>
+
+                <p class="uppercase text-[9px]
+                          tracking-[2px] text-gray-400 mt-3">
+                    Crores Advised
+                </p>
+
+            </div>
+
+
+            <div
+                data-aos="fade-up"
+                data-aos-delay="100"
+                class="text-center py-8 lg:border-r border-white/10">
+
+                <div class="serif text-5xl text-[#caa45d]">
+                    15+
+                </div>
+
+                <p class="uppercase text-[9px]
+                          tracking-[2px] text-gray-400 mt-3">
+                    Years Experience
+                </p>
+
+            </div>
+
+
+            <div
+                data-aos="fade-up"
+                data-aos-delay="200"
+                class="text-center py-8 border-r border-white/10">
+
+                <div class="serif text-5xl text-[#caa45d]">
+                    12
+                </div>
+
+                <p class="uppercase text-[9px]
+                          tracking-[2px] text-gray-400 mt-3">
+                    Premium Micro Markets
+                </p>
+
+            </div>
+
+
+            <div
+                data-aos="fade-up"
+                data-aos-delay="300"
+                class="text-center py-8">
+
+                <div class="serif text-5xl text-[#caa45d]">
+                    98%
+                </div>
+
+                <p class="uppercase text-[9px]
+                          tracking-[2px] text-gray-400 mt-3">
+                    Client Referrals
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PHILOSOPHY
+========================================================= -->
+
+<section class="py-28 bg-[#f8f7f4]">
+
+    <div class="max-w-[1050px] mx-auto px-6">
+
+        <div class="text-center max-w-[720px] mx-auto mb-16">
+
+            <div class="text-[#caa45d] text-[11px]
+                        tracking-[4px] mb-5">
+                OUR PHILOSOPHY
+            </div>
+
+            <h2 class="serif text-5xl md:text-6xl">
+                More Than Property.
+                <br>
+                <span class="italic">A Point of View.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Card -->
+
+            <div
+                data-aos="fade-up"
+                class="bg-white p-10 border border-[#e7e2d9]
+                       hover:-translate-y-2 transition duration-500">
+
+                <div class="w-12 h-12 rounded-full
+                            border border-[#caa45d]
+                            flex items-center justify-center
+                            mb-8">
+
+                    <i data-lucide="compass"
+                       class="w-5 h-5 text-[#caa45d]"></i>
+
+                </div>
+
+                <h3 class="serif text-3xl mb-4">
+                    Curated
+                </h3>
+
+                <p class="text-sm text-gray-500 leading-7">
+                    We believe luxury is defined by relevance, not
+                    abundance. Every property we represent is carefully
+                    selected.
+                </p>
+
+            </div>
+
+
+            <div
+                data-aos="fade-up"
+                data-aos-delay="100"
+                class="bg-white p-10 border border-[#e7e2d9]
+                       hover:-translate-y-2 transition duration-500">
+
+                <div class="w-12 h-12 rounded-full
+                            border border-[#caa45d]
+                            flex items-center justify-center
+                            mb-8">
+
+                    <i data-lucide="shield-check"
+                       class="w-5 h-5 text-[#caa45d]"></i>
+
+                </div>
+
+                <h3 class="serif text-3xl mb-4">
+                    Discreet
+                </h3>
+
+                <p class="text-sm text-gray-500 leading-7">
+                    Confidentiality is central to our work. Our clients
+                    receive a private and highly personalised advisory
+                    experience.
+                </p>
+
+            </div>
+
+
+            <div
+                data-aos="fade-up"
+                data-aos-delay="200"
+                class="bg-white p-10 border border-[#e7e2d9]
+                       hover:-translate-y-2 transition duration-500">
+
+                <div class="w-12 h-12 rounded-full
+                            border border-[#caa45d]
+                            flex items-center justify-center
+                            mb-8">
+
+                    <i data-lucide="trending-up"
+                       class="w-5 h-5 text-[#caa45d]"></i>
+
+                </div>
+
+                <h3 class="serif text-3xl mb-4">
+                    Insightful
+                </h3>
+
+                <p class="text-sm text-gray-500 leading-7">
+                    We combine local market intelligence with long-term
+                    thinking to help clients make informed property
+                    decisions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY ELYSIAN
+========================================================= -->
+
+<section class="py-28 bg-white">
+
+    <div class="max-w-[1050px] mx-auto px-6">
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+            <div data-aos="fade-right">
+
+                <div class="text-[#caa45d] text-[11px]
+                            tracking-[4px] mb-5">
+                    THE ELYSIAN DIFFERENCE
+                </div>
+
+                <h2 class="serif text-5xl md:text-6xl leading-[1]">
+                    A More
+                    <br>
+                    <span class="italic">Thoughtful</span>
+                    Approach.
+                </h2>
+
+            </div>
+
+
+            <div class="space-y-8">
+
+                <div
+                    data-aos="fade-left"
+                    class="flex gap-6">
+
+                    <span class="serif text-3xl text-[#caa45d]">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h3 class="serif text-2xl mb-2">
+                            Deep Local Intelligence
+                        </h3>
+
+                        <p class="text-sm text-gray-500 leading-7">
+                            Our understanding of India's premium
+                            micro-markets allows us to look beyond
+                            listings and understand true opportunity.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    data-aos="fade-left"
+                    data-aos-delay="100"
+                    class="flex gap-6">
+
+                    <span class="serif text-3xl text-[#caa45d]">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h3 class="serif text-2xl mb-2">
+                            Personal Advisory
+                        </h3>
+
+                        <p class="text-sm text-gray-500 leading-7">
+                            Every client has different ambitions.
+                            Our recommendations are built around
+                            those individual objectives.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    data-aos="fade-left"
+                    data-aos-delay="200"
+                    class="flex gap-6">
+
+                    <span class="serif text-3xl text-[#caa45d]">
+                        03
+                    </span>
+
+                    <div>
+
+                        <h3 class="serif text-2xl mb-2">
+                            End-to-End Guidance
+                        </h3>
+
+                        <p class="text-sm text-gray-500 leading-7">
+                            From discovery and due diligence to
+                            negotiation and closure, our team stays
+                            involved throughout the journey.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LEADERSHIP
+========================================================= -->
+
+<section class="py-28 bg-[#f8f7f4]">
+
+    <div class="max-w-[1050px] mx-auto px-6">
+
+        <div class="text-center mb-16">
+
+            <div class="text-[#caa45d] text-[11px]
+                        tracking-[4px] mb-5">
+                OUR LEADERSHIP
+            </div>
+
+            <h2 class="serif text-5xl md:text-6xl">
+                People Behind
+                <span class="italic">Elysian.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Person -->
+
+            <div data-aos="fade-up">
+
+                <div class="overflow-hidden mb-5">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=85"
+                        class="w-full h-[400px] object-cover
+                               grayscale hover:grayscale-0
+                               hover:scale-105 transition duration-700"
+                        alt="Senior Property Consultant"
+                    >
+
+                </div>
+
+                <h3 class="serif text-3xl">
+                    Arjun Mehra
+                </h3>
+
+                <p class="text-[#caa45d] uppercase
+                          tracking-[2px] text-[9px] mt-2">
+                    Founder & Managing Director
+                </p>
+
+            </div>
+
+
+            <div data-aos="fade-up" data-aos-delay="100">
+
+                <div class="overflow-hidden mb-5">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=85"
+                        class="w-full h-[400px] object-cover
+                               grayscale hover:grayscale-0
+                               hover:scale-105 transition duration-700"
+                        alt="Property Advisor"
+                    >
+
+                </div>
+
+                <h3 class="serif text-3xl">
+                    Ananya Kapoor
+                </h3>
+
+                <p class="text-[#caa45d] uppercase
+                          tracking-[2px] text-[9px] mt-2">
+                    Senior Property Advisor
+                </p>
+
+            </div>
+
+
+            <div data-aos="fade-up" data-aos-delay="200">
+
+                <div class="overflow-hidden mb-5">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
+                        class="w-full h-[400px] object-cover
+                               grayscale hover:grayscale-0
+                               hover:scale-105 transition duration-700"
+                        alt="Investment Director"
+                    >
+
+                </div>
+
+                <h3 class="serif text-3xl">
+                    Rohan Malhotra
+                </h3>
+
+                <p class="text-[#caa45d] uppercase
+                          tracking-[2px] text-[9px] mt-2">
+                    Investment Director
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LOCATIONS
+========================================================= -->
+
+<section class="py-28 bg-white">
+
+    <div class="max-w-[1050px] mx-auto px-6">
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <div data-aos="fade-right">
+
+                <div class="text-[#caa45d] text-[11px]
+                            tracking-[4px] mb-5">
+                    WHERE WE OPERATE
+                </div>
+
+                <h2 class="serif text-5xl md:text-6xl leading-[1] mb-8">
+                    India's Most
+                    <br>
+                    <span class="italic">Distinctive</span>
+                    Addresses.
+                </h2>
+
+                <p class="text-sm text-gray-500 leading-7 max-w-[500px]">
+                    Our network spans India's most sought-after residential
+                    and investment destinations, allowing our clients to
+                    access opportunities across established and emerging
+                    luxury markets.
+                </p>
+
+            </div>
+
+
+            <div
+                data-aos="fade-left"
+                class="grid grid-cols-2 gap-4">
+
+                <div class="border border-[#e5e0d7] p-8">
+                    <div class="serif text-3xl mb-2">Delhi</div>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">
+                        Lutyens Zone
+                    </p>
+                </div>
+
+                <div class="border border-[#e5e0d7] p-8">
+                    <div class="serif text-3xl mb-2">Gurgaon</div>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">
+                        Golf Course Road
+                    </p>
+                </div>
+
+                <div class="border border-[#e5e0d7] p-8">
+                    <div class="serif text-3xl mb-2">Mumbai</div>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">
+                        Bandra & South Mumbai
+                    </p>
+                </div>
+
+                <div class="border border-[#e5e0d7] p-8">
+                    <div class="serif text-3xl mb-2">Goa</div>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">
+                        Oceanfront Residences
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section id="contact"
+         class="relative py-28 bg-[#171717] text-white overflow-hidden">
+
+    <div class="absolute inset-0 opacity-[.07]">
+
+        <div class="w-[600px] h-[600px]
+                    rounded-full border border-[#caa45d]
+                    absolute -top-[300px] -right-[200px]">
+
+        </div>
+
+    </div>
+
+
+    <div class="relative max-w-[850px] mx-auto px-6 text-center">
+
+        <div
+            data-aos="fade-up"
+            class="text-[#caa45d] text-[11px]
+                   tracking-[5px] mb-6">
+            BEGIN YOUR CHAPTER
+        </div>
+
+        <h2
+            data-aos="fade-up"
+            data-aos-delay="100"
+            class="serif text-5xl md:text-7xl leading-none">
+            Your Next Address
+            <br>
+            <span class="italic">Starts Here.</span>
+        </h2>
+
+        <p
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="text-gray-400 max-w-[600px] mx-auto
+                   mt-7 text-sm leading-7">
+            Speak with our senior property consultants and discover
+            opportunities curated around your lifestyle and investment goals.
+        </p>
+
+
+        <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            class="mt-10 flex flex-col sm:flex-row
+                   justify-center gap-4">
+
+            <a href="#"
+               class="bg-[#caa45d] text-white
+                      px-8 py-4 rounded-full
+                      text-[11px] tracking-[1px]
+                      hover:bg-[#b58e48] transition">
+
+                EXPLORE PROPERTIES
+
+            </a>
+
+            <a href="#"
+               class="border border-white/30
+                      px-8 py-4 rounded-full
+                      text-[11px] tracking-[1px]
+                      hover:bg-white hover:text-black transition">
+
+                SCHEDULE CONSULTATION
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="bg-[#292929] text-white">
+
+    <div class="max-w-[1090px] mx-auto px-6 py-16">
+
+        <div class="grid md:grid-cols-4 gap-12">
+
+            <!-- Brand -->
+
+            <div class="md:col-span-2">
+
+                <div class="flex items-center gap-3 mb-6">
+
+                    <div class="w-9 h-9 rounded-full
+                                border border-[#caa45d]
+                                flex items-center justify-center">
+
+                        <span class="text-[#caa45d]">♛</span>
+
+                    </div>
+
+                    <div>
+
+                        <div class="serif text-3xl tracking-[2px]">
+                            ELYSIAN
+                        </div>
+
+                        <div class="text-[8px] tracking-[2px]
+                                    text-[#caa45d]">
+                            ESTATE CONSULTANTS
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="text-gray-400 text-sm
+                          leading-6 max-w-[400px]">
+
+                    Elysian Estate Consultants is India's premier
+                    luxury real estate advisory firm, specialising
+                    in high-value residential, penthouse, and
+                    commercial acquisitions.
+
+                </p>
+
+
+                <div class="flex gap-4 mt-7">
+
+                    <a href="#" class="text-gray-400 hover:text-[#caa45d]">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                    </a>
+
+                    <a href="#" class="text-gray-400 hover:text-[#caa45d]">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    </a>
+
+                    <a href="#" class="text-gray-400 hover:text-[#caa45d]">
+                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Links -->
+
+            <div>
+
+                <h3 class="serif text-xl mb-6">
+                    Quick Links
+                </h3>
+
+                <div class="space-y-3 text-sm text-gray-400">
+
+                    <a href="#" class="block hover:text-white">Home</a>
+                    <a href="#" class="block hover:text-white">Featured Estates</a>
+                    <a href="#" class="block hover:text-white">Buy & Rent Engine</a>
+                    <a href="#" class="block hover:text-white">Services</a>
+                    <a href="#" class="block hover:text-white">About Us</a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Compliance -->
+
+            <div>
+
+                <h3 class="serif text-xl mb-6">
+                    Compliance
+                </h3>
+
+                <p class="text-sm text-gray-400 leading-6">
+
+                    RERA Registration No:
+                    <br>
+                    RERA/CGN/2024/8910
+
+                </p>
+
+                <p class="text-[#caa45d]
+                          text-[9px] tracking-[2px] mt-5">
+                    ISO 9001:2015 CERTIFIED ADVISORY
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom -->
+
+        <div class="border-t border-white/10
+                    mt-14 pt-7
+                    flex flex-col md:flex-row
+                    justify-between gap-4
+                    text-[11px] text-gray-500">
+
+            <p>
+                © 2026 Elysian Estate Consultants Pvt. Ltd.
+                All Rights Reserved.
+            </p>
+
+            <div class="flex gap-7">
+
+                <a href="#" class="hover:text-white">
+                    Privacy Policy
+                </a>
+
+                <a href="#" class="hover:text-white">
+                    Terms of Service
+                </a>
+
+                <a href="#" class="hover:text-white">
+                    Disclaimer
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+    // Initialize AOS
+
+    AOS.init({
+        once: true,
+        duration: 800,
+        easing: 'ease-out-cubic'
+    });
+
+
+    // Lucide Icons
+
+    lucide.createIcons();
+
+
+    // Mobile Menu
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+
+        mobileMenu.classList.toggle("hidden");
+
+    });
+
+</script>
+
+</body>
+</html>

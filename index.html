@@ -1,45 +1,1623 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Real Estate</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+    <title>Elysian Estate Consultants | Luxury Real Estate & Advisory</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A059',
+                            goldDark: '#9E7C3B',
+                            goldLight: '#E8D5B5',
+                            charcoal: '#1A1A1A',
+                            darkGray: '#2C2C2C',
+                            warmGray: '#F9F8F6',
+                            stone: '#F2F0EC',
+                            border: '#E2DFD8'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
 
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 223, 216, 0.5);
+        }
 
-<nav class="bg-white fixed w-full z-20 top-0 start-0 border-default py-5 border-b border-gray-100 shadow-sm">
-  <div class="max-w-7xl mx-auto flex gap-80">
-    <div class="py-4">
-      <p>LOGO</p>
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(26,26,26,0.5) 0%, rgba(26,26,26,0.3) 50%, rgba(26,26,26,0.7) 100%);
+        }
+
+        /* Swiper Customization */
+        .swiper-pagination-bullet-active {
+            background-color: #C5A059 !important;
+            width: 24px !important;
+            border-radius: 4px !important;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #1A1A1A !important;
+            background: #FFFFFF;
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #E2DFD8;
+        }
+
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 16px !important;
+            font-weight: bold;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F8F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9E7C3B;
+        }
+
+        /* Toast notification */
+        #toast {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-hover-effect {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold Light selection:text-white">
+
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none bg-brand-charcoal text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 border-l-4 border-brand-gold">
+        <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+        <div>
+            <h5 id="toast-title" class="font-semibold text-sm">Request Submitted</h5>
+            <p id="toast-message" class="text-xs text-gray-300">Our senior property consultant will reach out shortly.</p>
+        </div>
     </div>
 
-    <div class="py-4">
-    <a href="#" class="px-4">Home</a>
-    <a href="#" class="px-4">About</a>
-    <a href="#" class="px-4">Services</a>
-    <a href="#" class="px-4">Property</a>
-    <a href="#" class="px-4">Contact</a>
+    <div id="visit-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl border border-brand-border relative transform transition-all scale-95 opacity-0 modal-content">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-gray-400 hover:text-brand-charcoal text-xl transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-1 block">VIP Service</span>
+                <h3 class="text-2xl font-serif font-bold text-brand-charcoal">Schedule a Private Tour</h3>
+                <p class="text-xs text-gray-500 mt-1">Experience luxury real estate with personalized white-glove service.</p>
+            </div>
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Vikramaditya Singhania" class="w-full px-4 py-3 rounded-lg border border-brand-border focus:outline-none focus:border-brand-gold text-sm bg-brand-warmGray/50">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-lg border border-brand-border focus:outline-none focus:border-brand-gold text-sm bg-brand-warmGray/50">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Preferred Date</label>
+                        <input type="date" required class="w-full px-4 py-3 rounded-lg border border-brand-border focus:outline-none focus:border-brand-gold text-sm bg-brand-warmGray/50 text-gray-700">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Property of Interest</label>
+                    <select class="w-full px-4 py-3 rounded-lg border border-brand-border focus:outline-none focus:border-brand-gold text-sm bg-brand-warmGray/50 text-gray-700">
+                        <option>The Crestline Villa, Jaipur</option>
+                        <option>Aero-Sky Penthouse, Gurgaon</option>
+                        <option>Bandra Waterfront Residence, Mumbai</option>
+                        <option>Lutyens Contemporary Mansion, Delhi</option>
+                        <option>Anjuna Luxury Beach Villa, Goa</option>
+                        <option>Koramangala Smart Penthouse, Bangalore</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldDark text-white py-3.5 rounded-lg text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg">
+                    Confirm Visit Schedule
+                </button>
+            </form>
+        </div>
     </div>
-  
-  <div>
-    <button class="bg-green-800 px-5 py-3 rounded-xl text-white">Learn More</button>
-  </div>
-  </div>
-</nav>
 
-<div class="flex h-100 items-center justify-center bg-slate-950/80 bg-[url('https://images.pexels.com/photos/6546397/pexels-photo-6546397.jpeg')] bg-cover bg-bottom bg-blend-multiply p-6">
-  <div>
-  <p class="text-xl font-bold text-white">find a place</p>
-  <p class="text-5xl font-bold text-white">You'll Love to Call Home.</p>
-</div>
-</div>
+    <header id="main-nav" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-5 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center bg-brand-charcoal text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all">
+                        <i class="fa-solid fa-crown text-base"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-wider block leading-none nav-title">ELYSIAN</span>
+                        <span class="text-[9px] tracking-[0.25em] uppercase text-brand-gold block mt-1 nav-subtitle">Estate Consultants</span>
+                    </div>
+                </a>
 
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold">
+                    <a href="#hero" class="hover:text-brand-gold transition-colors text-brand-gold">Home</a>
+                    <a href="#featured" class="hover:text-brand-gold transition-colors">Properties</a>
+                    <a href="#filter-section" class="hover:text-brand-gold transition-colors">Buy</a>
+                    <a href="#filter-section" class="hover:text-brand-gold transition-colors">Rent</a>
+                    <a href="#investment" class="hover:text-brand-gold transition-colors">Sell</a>
+                    <a href="#why-choose-us" class="hover:text-brand-gold transition-colors">About</a>
+                    <a href="#services" class="hover:text-brand-gold transition-colors">Services</a>
+                    <a href="#locations" class="hover:text-brand-gold transition-colors">Locations</a>
+                    <a href="#contact" class="hover:text-brand-gold transition-colors">Contact</a>
+                </nav>
 
-    <!-- Tailwind CSS v4 Play CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="index.js"></script>
-  </body>
+                <!-- Right Actions -->
+                <div class="hidden lg:flex items-center space-x-5">
+                    <button onclick="document.getElementById('filter-section').scrollIntoView({behavior: 'smooth'})" class="text-sm hover:text-brand-gold transition-colors p-2" title="Search Properties">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button onclick="openModal()" class="bg-brand-gold hover:bg-brand-goldDark text-white px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5">
+                        Schedule a Visit
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button id="mobile-menu-btn" class="text-2xl focus:outline-none p-1">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden fixed inset-x-0 top-[72px] bg-white border-b border-brand-border shadow-2xl p-6 lg:hidden text-brand-charcoal transition-all">
+            <nav class="flex flex-col space-y-4 text-sm font-semibold tracking-wider uppercase">
+                <a href="#hero" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Home</a>
+                <a href="#featured" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Properties</a>
+                <a href="#filter-section" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Buy & Rent Discovery</a>
+                <a href="#services" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Services</a>
+                <a href="#locations" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Locations</a>
+                <a href="#why-choose-us" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">About Us</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Contact</a>
+            </nav>
+            <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-3">
+                <button onclick="openModal(); toggleMobileMenu();" class="w-full bg-brand-gold text-white py-3 rounded-xl font-semibold text-xs uppercase tracking-widest text-center shadow-lg">
+                    Schedule a Visit
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-32 overflow-hidden">
+        <!-- Hero Background Image/Video representation -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80" alt="Luxury Real Estate Architectural Villa" class="w-full h-full object-cover transform scale-105 hero-bg-img">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white mt-8">
+            <span class="hero-sub font-semibold uppercase tracking-[0.3em] text-xs sm:text-sm text-brand-goldLight mb-4 inline-block bg-black/30 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+                Pinnacle of High-End Living
+            </span>
+            <h1 class="hero-title text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight max-w-5xl mx-auto leading-[1.1] mb-6">
+                Find a Place You’ll Love to Call Home
+            </h1>
+            <p class="hero-desc text-base sm:text-lg text-gray-200 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Elysian Estate Consultants curates India's most exquisite luxury residences, penthouses, and architectural landmarks for discerning buyers and visionary investors.
+            </p>
+
+            <div class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#featured" class="w-full sm:w-auto px-8 py-4 bg-brand-gold hover:bg-brand-goldDark text-white font-semibold text-xs uppercase tracking-widest rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl">
+                    Explore Properties
+                </a>
+                <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold text-xs uppercase tracking-widest rounded-full transition-all duration-300">
+                    Schedule a Visit
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Quick Search Panel -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[92%] max-w-6xl z-20">
+            <div class="bg-white rounded-2xl shadow-2xl p-5 sm:p-7 border border-brand-border/60 backdrop-blur-md">
+                <!-- Buy / Rent Toggle Tabs -->
+                <div class="flex items-center space-x-2 mb-5 border-b border-gray-100 pb-3">
+                    <button id="hero-toggle-buy" onclick="setHeroSearchType('Buy')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-brand-charcoal text-white transition-all">Buy</button>
+                    <button id="hero-toggle-rent" onclick="setHeroSearchType('Rent')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand-charcoal transition-all">Rent</button>
+                </div>
+
+                <form onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Location</label>
+                        <select id="hero-location" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="All">All Locations</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Gurgaon">Gurgaon</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi NCR</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Bangalore">Bangalore</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Property Type</label>
+                        <select id="hero-type" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="All">All Types</option>
+                            <option value="Villa">Luxury Villa</option>
+                            <option value="Penthouse">Sky Penthouse</option>
+                            <option value="Apartment">Luxury Apartment</option>
+                            <option value="Mansion">Mansion</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Max Budget</label>
+                        <select id="hero-budget" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="Any">Any Budget</option>
+                            <option value="10">Under ₹10 Cr</option>
+                            <option value="25">Under ₹25 Cr</option>
+                            <option value="50">Under ₹50 Cr</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Bedrooms</label>
+                        <select id="hero-beds" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="Any">Any BHK</option>
+                            <option value="3">3+ BHK</option>
+                            <option value="4">4+ BHK</option>
+                            <option value="5">5+ BHK</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldDark text-white py-3.5 rounded-xl font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-warmGray border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-brand-border">
+                <div class="pt-4 md:pt-0">
+                    <h3 class="text-4xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-2"><span class="counter" data-target="15">0</span>+</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Years of Excellence</p>
+                </div>
+                <div class="pt-4 md:pt-0">
+                    <h3 class="text-4xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-2"><span class="counter" data-target="2500">0</span>+</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Properties Transacted</p>
+                </div>
+                <div class="pt-4 md:pt-0">
+                    <h3 class="text-4xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-2"><span class="counter" data-target="1200">0</span>+</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">High-Net-Worth Clients</p>
+                </div>
+                <div class="pt-4 md:pt-0">
+                    <h3 class="text-4xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-2"><span class="counter" data-target="25">0</span>+</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Prime Indian Metros</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Curated Luxury Portfolio</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal">Featured Residences</h2>
+                </div>
+                <p class="text-gray-500 max-w-md text-sm mt-4 md:mt-0 font-light">
+                    Handpicked premier homes engineered with master craftsmanship, prime location advantage, and exceptional investment value.
+                </p>
+            </div>
+
+            <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cards rendered dynamically via JavaScript for consistency -->
+            </div>
+
+            <div class="mt-16 text-center">
+                <button onclick="document.getElementById('filter-section').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center space-x-3 px-8 py-4 border border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal hover:text-white rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300">
+                    <span>Explore All Listings</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="filter-section" class="py-24 bg-brand-warmGray border-t border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Search Engine</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-4">Discover Your Next Address</h2>
+                <p class="text-gray-500 text-sm font-light">Filter by city, property archetype, budget parameters, and BHK configurations with live dynamic updates.</p>
+            </div>
+
+            <!-- Comprehensive Filter Bar -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-brand-border mb-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Location</label>
+                        <select id="filter-location" onchange="applyFilters()" class="w-full px-4 py-3 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="All">All Cities</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Gurgaon">Gurgaon</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi NCR</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Bangalore">Bangalore</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Listing Type</label>
+                        <select id="filter-listing" onchange="applyFilters()" class="w-full px-4 py-3 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="All">Buy & Rent</option>
+                            <option value="Sale">For Sale</option>
+                            <option value="Rent">For Rent</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Property Type</label>
+                        <select id="filter-type" onchange="applyFilters()" class="w-full px-4 py-3 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="All">All Architecture</option>
+                            <option value="Villa">Villa / Estate</option>
+                            <option value="Penthouse">Sky Penthouse</option>
+                            <option value="Apartment">Luxury Apartment</option>
+                            <option value="Mansion">Mansion</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Sort By</label>
+                        <select id="filter-sort" onchange="applyFilters()" class="w-full px-4 py-3 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
+                            <option value="featured">Featured First</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-medium">
+                    <span id="results-count">Showing 6 Verified Properties</span>
+                    <button onclick="resetFilters()" class="text-brand-gold hover:text-brand-goldDark font-bold uppercase tracking-wider mt-3 sm:mt-0 flex items-center space-x-1">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Reset All Filters</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Filter Results Grid -->
+            <div id="filter-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript dynamic injection -->
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Property Spotlight</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-4">The Crestline Villa Showcase</h2>
+                <p class="text-gray-500 text-sm font-light">An unprecedented architectural statement located in the heart of Civil Lines, Jaipur.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Swiper Image Gallery -->
+                <div class="lg:col-span-7">
+                    <div class="swiper property-swiper rounded-2xl shadow-xl overflow-hidden mb-4 border border-brand-border">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80" alt="Villa Exterior" class="w-full h-[420px] object-cover">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Living Lounge" class="w-full h-[420px] object-cover">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="Master Suite" class="w-full h-[420px] object-cover">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <!-- Property Details Content -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-block px-3 py-1 bg-brand-warmGray text-brand-gold text-xs font-bold uppercase tracking-wider rounded-md border border-brand-border">
+                        Exclusive Listing
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold text-brand-charcoal">The Crestline Villa</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">
+                        <i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Civil Lines, Jaipur, Rajasthan
+                    </p>
+
+                    <div class="text-3xl font-serif font-bold text-brand-gold">
+                        ₹ 18.50 <span class="text-lg font-sans text-brand-charcoal">Cr</span>
+                    </div>
+
+                    <p class="text-sm text-gray-600 leading-relaxed font-light">
+                        Spanning over 12,000 sq.ft of handcrafted luxury, featuring double-height ceiling voids, temperature-controlled infinity pool, Italian statuario marble flooring, and panoramic landscaped gardens.
+                    </p>
+
+                    <!-- Key Specs Badges -->
+                    <div class="grid grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 bg-brand-warmGray rounded-xl text-center border border-brand-border/60">
+                            <span class="block text-xs text-gray-500 uppercase">Bedrooms</span>
+                            <span class="text-base font-bold text-brand-charcoal">6 En-suite</span>
+                        </div>
+                        <div class="p-3 bg-brand-warmGray rounded-xl text-center border border-brand-border/60">
+                            <span class="block text-xs text-gray-500 uppercase">Bathrooms</span>
+                            <span class="text-base font-bold text-brand-charcoal">7 Italian</span>
+                        </div>
+                        <div class="p-3 bg-brand-warmGray rounded-xl text-center border border-brand-border/60">
+                            <span class="block text-xs text-gray-500 uppercase">Built-Up</span>
+                            <span class="text-base font-bold text-brand-charcoal">12,500 sq.ft</span>
+                        </div>
+                    </div>
+
+                    <!-- Amenities list -->
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">Key Amenities</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700"><i class="fa-solid fa-water text-brand-gold mr-1"></i> Heated Pool</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700"><i class="fa-solid fa-shield-halved text-brand-gold mr-1"></i> 3-Tier Security</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700"><i class="fa-solid fa-bolt text-brand-gold mr-1"></i> Smart Home OS</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700"><i class="fa-solid fa-square-parking text-brand-gold mr-1"></i> 6 Car Garage</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openModal()" class="w-full bg-brand-charcoal hover:bg-brand-gold text-white py-4 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg">
+                        Schedule a Private Tour
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-brand-warmGray border-t border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Bespoke Expertise</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-4">Our Real Estate Advisory</h2>
+                <p class="text-gray-500 text-sm font-light">Comprehensive advisory solutions designed for high-net-worth individuals, family offices, and corporate investors.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-house-chimney-window"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Property Buying</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Curated access to off-market luxury villas, sky penthouses, and architectural landmarks.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>Inquire Now</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Property Selling</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Targeted international marketing strategies maximizing asset value for property owners.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>List Property</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Luxury Rentals</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Exclusive long-term leases for diplomats, C-suite executives, and luxury lifestyle seekers.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>Explore Leases</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Investment Consulting</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Data-driven portfolio diversification across high-appreciation micro-markets.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>Consult Expert</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Property Valuation</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">RERA-certified valuation reports for legal, tax, and institutional transactions.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>Get Valuation</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">NRI Property Desk</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">End-to-end legal, tax repatriation, and tenant management solutions for non-resident Indians.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>NRI Assistance</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 7 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Commercial Assets</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Pre-leased office floors, Grade-A retail hubs, and high-yield institutional assets.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>View Commercial</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 8 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover-effect">
+                    <div class="w-12 h-12 rounded-xl bg-brand-warmGray text-brand-gold flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-screws-tilting"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Asset Management</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">White-glove property maintenance, tenant vetting, and rental collection oversight.</p>
+                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                        <span>Manage Estate</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Luxury Real Estate Lounge" class="w-full h-[520px] object-cover">
+                    </div>
+                    <!-- Overlay Trust Card -->
+                    <div class="absolute -bottom-8 -right-4 sm:right-8 bg-brand-charcoal text-white p-6 rounded-2xl shadow-2xl max-w-xs border border-brand-gold/30 hidden sm:block">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i class="fa-solid fa-shield-halved text-brand-gold text-2xl"></i>
+                            <h4 class="font-serif text-lg font-bold">100% RERA Compliant</h4>
+                        </div>
+                        <p class="text-xs text-gray-300 font-light">Every listing undergoes rigorous legal title verification and architectural audits.</p>
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">The Elysian Difference</span>
+                        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal leading-tight">Why Discerning Clients Trust Us</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex-shrink-0 flex items-center justify-center font-bold text-sm border border-brand-border">01</div>
+                            <div>
+                                <h4 class="text-lg font-serif font-bold text-brand-charcoal">Verified Off-Market Listings</h4>
+                                <p class="text-gray-500 text-xs font-light mt-1">Exclusive access to private luxury estates not publicly advertised on general portals.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex-shrink-0 flex items-center justify-center font-bold text-sm border border-brand-border">02</div>
+                            <div>
+                                <h4 class="text-lg font-serif font-bold text-brand-charcoal">Senior Advisory Team</h4>
+                                <p class="text-gray-500 text-xs font-light mt-1">Consultants with over 15 years of localized micro-market expertise and legal acumen.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex-shrink-0 flex items-center justify-center font-bold text-sm border border-brand-border">03</div>
+                            <div>
+                                <h4 class="text-lg font-serif font-bold text-brand-charcoal">Transparent Legal Closing</h4>
+                                <p class="text-gray-500 text-xs font-light mt-1">Clear documentation, title search reports, and seamless stamp duty assistance.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex-shrink-0 flex items-center justify-center font-bold text-sm border border-brand-border">04</div>
+                            <div>
+                                <h4 class="text-lg font-serif font-bold text-brand-charcoal">Personalized Concierge Service</h4>
+                                <p class="text-gray-500 text-xs font-light mt-1">VIP private chauffeured site visits and dedicated relationship managers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="py-24 bg-brand-warmGray border-t border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Prime Indian Destinations</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal">Explore Popular Locations</h2>
+                </div>
+                <p class="text-gray-500 max-w-md text-sm mt-4 md:mt-0 font-light">
+                    From oceanfront havens in Goa to high-growth financial hubs in Gurgaon and Mumbai.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Location 1 -->
+                <div onclick="filterByLocation('Jaipur')" class="group relative rounded-2xl overflow-hidden h-80 cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=600&q=80" alt="Jaipur Real Estate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-xs text-brand-goldLight font-bold uppercase tracking-wider block">42 Properties</span>
+                        <h3 class="text-2xl font-serif font-bold">Jaipur</h3>
+                        <span class="text-[11px] uppercase tracking-widest text-gray-300 mt-2 inline-flex items-center space-x-1 group-hover:text-brand-gold transition-colors">
+                            <span>Explore Estates</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Location 2 -->
+                <div onclick="filterByLocation('Gurgaon')" class="group relative rounded-2xl overflow-hidden h-80 cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=600&q=80" alt="Gurgaon Sky Penthouses" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-xs text-brand-goldLight font-bold uppercase tracking-wider block">68 Properties</span>
+                        <h3 class="text-2xl font-serif font-bold">Gurgaon NCR</h3>
+                        <span class="text-[11px] uppercase tracking-widest text-gray-300 mt-2 inline-flex items-center space-x-1 group-hover:text-brand-gold transition-colors">
+                            <span>Explore Estates</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Location 3 -->
+                <div onclick="filterByLocation('Mumbai')" class="group relative rounded-2xl overflow-hidden h-80 cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80" alt="Mumbai Sea Facing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-xs text-brand-goldLight font-bold uppercase tracking-wider block">95 Properties</span>
+                        <h3 class="text-2xl font-serif font-bold">Mumbai</h3>
+                        <span class="text-[11px] uppercase tracking-widest text-gray-300 mt-2 inline-flex items-center space-x-1 group-hover:text-brand-gold transition-colors">
+                            <span>Explore Estates</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Location 4 -->
+                <div onclick="filterByLocation('Goa')" class="group relative rounded-2xl overflow-hidden h-80 cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Goa Beach Villas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-xs text-brand-goldLight font-bold uppercase tracking-wider block">38 Properties</span>
+                        <h3 class="text-2xl font-serif font-bold">Goa</h3>
+                        <span class="text-[11px] uppercase tracking-widest text-gray-300 mt-2 inline-flex items-center space-x-1 group-hover:text-brand-gold transition-colors">
+                            <span>Explore Estates</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="investment" class="py-24 bg-brand-charcoal text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase block">Wealth Preservation</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold leading-tight">
+                        Invest in Properties That Build Your Legacy
+                    </h2>
+                    <p class="text-gray-300 text-sm font-light leading-relaxed">
+                        Prime real estate remains the most resilient asset class in India. We guide family offices, corporate leaders, and NRI investors toward high-yielding commercial assets, landbanks, and capital appreciation corridors.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+                            <h4 class="font-serif text-lg font-bold text-brand-gold mb-1">High Rental Yields</h4>
+                            <p class="text-xs text-gray-300 font-light">Grade-A commercial assets yielding 8-10% steady cash flows.</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+                            <h4 class="font-serif text-lg font-bold text-brand-gold mb-1">Capital Growth</h4>
+                            <p class="text-xs text-gray-300 font-light">Strategic acquisitions in infrastructure expansion zones.</p>
+                        </div>
+                    </div>
+
+                    <button onclick="openModal()" class="inline-block mt-4 bg-brand-gold hover:bg-brand-goldDark text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-xl">
+                        Schedule Investment Briefing
+                    </button>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Property Investment Architecture" class="w-full h-[450px] object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Client Retrospectives</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-4">Words From Our Patrons</h2>
+                <p class="text-gray-500 text-sm font-light">Genuine experiences from luxury homebuyers and institutional investors.</p>
+            </div>
+
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide p-2">
+                        <div class="bg-brand-warmGray p-8 rounded-2xl border border-brand-border h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-brand-gold flex space-x-1 mb-4 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="text-gray-600 text-xs sm:text-sm font-light leading-relaxed mb-6">
+                                    "Elysian Estate Consultants handled our acquisition of a seafront penthouse in Bandra. Their title due diligence and negotiation tact saved us both time and capital."
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4 border-t border-brand-border/60 pt-4">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Ananya Roy" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-serif font-bold text-base text-brand-charcoal">Ananya Roy</h4>
+                                    <span class="text-[11px] text-gray-500 block">Managing Director, TechVentures</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide p-2">
+                        <div class="bg-brand-warmGray p-8 rounded-2xl border border-brand-border h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-brand-gold flex space-x-1 mb-4 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="text-gray-600 text-xs sm:text-sm font-light leading-relaxed mb-6">
+                                    "As an NRI residing in Dubai, finding trustworthy consultants in India was crucial. Their team provided video walk-throughs and complete legal assistance for our Jaipur villa."
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4 border-t border-brand-border/60 pt-4">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Rajesh Oberoi" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-serif font-bold text-base text-brand-charcoal">Rajesh Oberoi</h4>
+                                    <span class="text-[11px] text-gray-500 block">NRI Investor, Dubai</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide p-2">
+                        <div class="bg-brand-warmGray p-8 rounded-2xl border border-brand-border h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-brand-gold flex space-x-1 mb-4 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="text-gray-600 text-xs sm:text-sm font-light leading-relaxed mb-6">
+                                    "The discrete nature of their team when selling our ancestral estate in Lutyens Delhi was exemplary. Highly professional white-glove advisory."
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4 border-t border-brand-border/60 pt-4">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Karan Munjal" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-serif font-bold text-base text-brand-charcoal">Karan Munjal</h4>
+                                    <span class="text-[11px] text-gray-500 block">Industrialist, New Delhi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-8 relative"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-warmGray border-t border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Seamless Journey</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-4">Our Acquisition Process</h2>
+                <p class="text-gray-500 text-sm font-light">A structured, four-step advisory roadmap built around complete transparency.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border text-center relative">
+                    <span class="text-4xl font-serif font-bold text-brand-gold/30 mb-4 block">01</span>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-2">Discovery</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Understanding your architectural preferences, lifestyle priorities, and financial parameters.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border text-center relative">
+                    <span class="text-4xl font-serif font-bold text-brand-gold/30 mb-4 block">02</span>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-2">Matchmaking</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Presenting a curated shortlist of verified public and off-market luxury listings.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border text-center relative">
+                    <span class="text-4xl font-serif font-bold text-brand-gold/30 mb-4 block">03</span>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-2">VIP Inspection</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Chauffeured private viewings accompanied by senior architectural specialists.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-border text-center relative">
+                    <span class="text-4xl font-serif font-bold text-brand-gold/30 mb-4 block">04</span>
+                    <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-2">Seamless Closing</h3>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Complete legal due diligence, title clearance, tax optimization, and keys handover.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Leadership</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal mb-4">Senior Property Advisors</h2>
+                <p class="text-gray-500 text-sm font-light">Seasoned real estate strategists providing confidential white-glove service.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Agent 1 -->
+                <div class="bg-brand-warmGray rounded-2xl overflow-hidden border border-brand-border card-hover-effect">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="Vikramaditya Singhania" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs text-brand-gold font-bold uppercase tracking-wider block mb-1">Managing Partner</span>
+                        <h3 class="text-2xl font-serif font-bold text-brand-charcoal">Vikramaditya Singhania</h3>
+                        <p class="text-xs text-gray-500 mt-2 font-light">Specialization: Ultra-Luxury Estates & Family Offices (18+ Yrs Exp)</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <button onclick="openModal()" class="flex-1 bg-brand-charcoal text-white py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-brand-gold transition-colors">
+                                Book Consult
+                            </button>
+                            <a href="tel:+919876543210" class="w-10 h-10 border border-brand-border rounded-lg flex items-center justify-center text-brand-charcoal hover:text-brand-gold transition-colors">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent 2 -->
+                <div class="bg-brand-warmGray rounded-2xl overflow-hidden border border-brand-border card-hover-effect">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Radhika Kapoor" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs text-brand-gold font-bold uppercase tracking-wider block mb-1">Director - Residential</span>
+                        <h3 class="text-2xl font-serif font-bold text-brand-charcoal">Radhika Kapoor</h3>
+                        <p class="text-xs text-gray-500 mt-2 font-light">Specialization: Mumbai & Goa Waterfront Penthouses (14+ Yrs Exp)</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <button onclick="openModal()" class="flex-1 bg-brand-charcoal text-white py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-brand-gold transition-colors">
+                                Book Consult
+                            </button>
+                            <a href="tel:+919876543210" class="w-10 h-10 border border-brand-border rounded-lg flex items-center justify-center text-brand-charcoal hover:text-brand-gold transition-colors">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent 3 -->
+                <div class="bg-brand-warmGray rounded-2xl overflow-hidden border border-brand-border card-hover-effect">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Aditya Vardhan" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs text-brand-gold font-bold uppercase tracking-wider block mb-1">Head - NRI & Commercial</span>
+                        <h3 class="text-2xl font-serif font-bold text-brand-charcoal">Aditya Vardhan</h3>
+                        <p class="text-xs text-gray-500 mt-2 font-light">Specialization: Commercial Yield Assets & NRI Advisory (12+ Yrs Exp)</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <button onclick="openModal()" class="flex-1 bg-brand-charcoal text-white py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-brand-gold transition-colors">
+                                Book Consult
+                            </button>
+                            <a href="tel:+919876543210" class="w-10 h-10 border border-brand-border rounded-lg flex items-center justify-center text-brand-charcoal hover:text-brand-gold transition-colors">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-warmGray border-t border-b border-brand-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Clarity & Confidence</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-serif font-bold text-lg text-brand-charcoal focus:outline-none">
+                        <span>How do I schedule a private property inspection?</span>
+                        <i class="fa-solid fa-plus text-brand-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-500 font-light leading-relaxed border-t border-gray-100 pt-4">
+                        You can schedule a tour by clicking "Schedule a Visit" on any listing or header. Our team will coordinate chauffeured transfers and private access according to your schedule.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-serif font-bold text-lg text-brand-charcoal focus:outline-none">
+                        <span>Do you assist with institutional home loans & legal due diligence?</span>
+                        <i class="fa-solid fa-plus text-brand-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-500 font-light leading-relaxed border-t border-gray-100 pt-4">
+                        Yes. We work alongside top institutional banking partners (HDFC, ICICI Wealth, Axis Premier) to facilitate preferential mortgage structuring and provide RERA legal title reports.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-serif font-bold text-lg text-brand-charcoal focus:outline-none">
+                        <span>How do you handle NRI property transactions and repatriation?</span>
+                        <i class="fa-solid fa-plus text-brand-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-500 font-light leading-relaxed border-t border-gray-100 pt-4">
+                        Our dedicated NRI Desk manages complete FEMA compliance, NRE/NRO banking procedures, Power of Attorney drafting, and tax advisory for seamless international transactions.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-serif font-bold text-lg text-brand-charcoal focus:outline-none">
+                        <span>Can I list my property exclusively with Elysian Estates?</span>
+                        <i class="fa-solid fa-plus text-brand-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-500 font-light leading-relaxed border-t border-gray-100 pt-4">
+                        Absolutely. We offer off-market listing privileges where your property is confidentially showcased exclusively to verified High-Net-Worth buyers without public exposure.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-2 block">Direct Communication</span>
+                        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-brand-charcoal">Connect With Our Senior Team</h2>
+                        <p class="text-gray-500 text-sm font-light mt-4">Visit our headquarters or request an in-person meeting with our advisory board.</p>
+                    </div>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex items-center justify-center flex-shrink-0 border border-brand-border">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-brand-charcoal text-base">Corporate Headquarters</h4>
+                                <p class="text-gray-500 text-xs mt-1">Elysian Tower, Floor 14, Golf Course Road, DLF Phase 5, Gurgaon, HR 122002</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex items-center justify-center flex-shrink-0 border border-brand-border">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-brand-charcoal text-base">Direct Advisory Line</h4>
+                                <p class="text-gray-500 text-xs mt-1">+91 (124) 488 9000 / +91 98100 00000</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-warmGray text-brand-gold flex items-center justify-center flex-shrink-0 border border-brand-border">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-brand-charcoal text-base">Electronic Correspondence</h4>
+                                <p class="text-gray-500 text-xs mt-1">advisory@elysianestates.in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder Card -->
+                    <div class="rounded-2xl overflow-hidden border border-brand-border h-48 relative bg-brand-warmGray flex items-center justify-center text-center p-6">
+                        <div class="space-y-2">
+                            <i class="fa-solid fa-map-location-dot text-3xl text-brand-gold"></i>
+                            <h5 class="font-serif font-bold text-brand-charcoal">Golf Course Road, Gurgaon</h5>
+                            <span class="text-[11px] text-gray-500 block">Mon - Sat: 9:30 AM - 7:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="lg:col-span-7 bg-brand-warmGray p-8 sm:p-10 rounded-2xl border border-brand-border">
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Full Name</label>
+                                <input type="text" required placeholder="e.g. Maharani Gayatri Devi" class="w-full px-4 py-3.5 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Email Address</label>
+                                <input type="email" required placeholder="name@domain.com" class="w-full px-4 py-3.5 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-white">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Phone Number</label>
+                                <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3.5 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Intent</label>
+                                <select class="w-full px-4 py-3.5 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-white">
+                                    <option>Looking to Buy Luxury Estate</option>
+                                    <option>Looking to Rent Sky Penthouse</option>
+                                    <option>List Property For Sale</option>
+                                    <option>NRI Investment Advisory</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Message / Specific Requirements</label>
+                            <textarea rows="4" placeholder="Mention preferred micro-market, budget range, BHK configuration..." class="w-full px-4 py-3.5 rounded-xl border border-brand-border text-sm focus:outline-none focus:border-brand-gold bg-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldDark text-white py-4 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-xl">
+                            Talk to a Senior Property Expert
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-charcoal text-white text-center relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <span class="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase block mb-3">Begin Your Chapter</span>
+            <h2 class="text-4xl sm:text-6xl font-serif font-bold mb-6">Your Next Address Starts Here.</h2>
+            <p class="text-gray-300 max-w-xl mx-auto text-sm font-light mb-10 leading-relaxed">
+                Allow our senior consultants to tailor an off-market portfolio aligned with your architectural lifestyle and capital growth objectives.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#featured" class="px-8 py-4 bg-brand-gold hover:bg-brand-goldDark text-white font-bold text-xs uppercase tracking-widest rounded-full transition-all duration-300 shadow-xl">
+                    Explore Properties
+                </a>
+                <button onclick="openModal()" class="px-8 py-4 border border-white/30 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-widest rounded-full transition-all duration-300">
+                    Schedule Private Consultation
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-darkGray text-white pt-20 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#" class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-full border border-brand-gold flex items-center justify-center bg-brand-charcoal text-brand-gold">
+                            <i class="fa-solid fa-crown text-sm"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold tracking-wider">ELYSIAN</span>
+                    </a>
+                    <p class="text-gray-400 text-xs font-light leading-relaxed max-w-sm">
+                        Elysian Estate Consultants is India's premier luxury real estate advisory firm, specializing in high-value residential, penthouse, and commercial acquisitions.
+                    </p>
+                    <div class="flex space-x-4 pt-2 text-gray-400">
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-youtube text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#hero" class="hover:text-brand-gold transition-colors">Home</a></li>
+                        <li><a href="#featured" class="hover:text-brand-gold transition-colors">Featured Estates</a></li>
+                        <li><a href="#filter-section" class="hover:text-brand-gold transition-colors">Buy & Rent Engine</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Services</a></li>
+                        <li><a href="#why-choose-us" class="hover:text-brand-gold transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Prime Locations -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-4">Metros</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#locations" class="hover:text-brand-gold transition-colors">Jaipur Civil Lines</a></li>
+                        <li><a href="#locations" class="hover:text-brand-gold transition-colors">Gurgaon Golf Course Rd</a></li>
+                        <li><a href="#locations" class="hover:text-brand-gold transition-colors">Mumbai Bandra Seaface</a></li>
+                        <li><a href="#locations" class="hover:text-brand-gold transition-colors">Delhi Lutyens Zone</a></li>
+                        <li><a href="#locations" class="hover:text-brand-gold transition-colors">Goa Oceanfront</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Notice -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-4">Compliance</h4>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed mb-3">
+                        RERA Registration No: REA/GGN/2024/8910. All property renderings and specifications are subject to developer disclosures.
+                    </p>
+                    <span class="text-[10px] text-brand-gold font-mono block">ISO 9001:2015 Certified Advisory</span>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 Elysian Estate Consultants Pvt. Ltd. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-brand-gold transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const PROPERTIES = [
+            {
+                id: 1,
+                title: "The Crestline Villa",
+                location: "Jaipur",
+                address: "Civil Lines, Jaipur",
+                price: 18.50,
+                unit: "Cr",
+                type: "Villa",
+                listing: "Sale",
+                beds: 6,
+                baths: 7,
+                area: "12,500 sq.ft",
+                image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+                badge: "Exclusive",
+                featured: true
+            },
+            {
+                id: 2,
+                title: "Aero-Sky Penthouse",
+                location: "Gurgaon",
+                address: "Golf Course Road, Gurgaon",
+                price: 24.00,
+                unit: "Cr",
+                type: "Penthouse",
+                listing: "Sale",
+                beds: 5,
+                baths: 6,
+                area: "8,900 sq.ft",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+                badge: "Hot Deal",
+                featured: true
+            },
+            {
+                id: 3,
+                title: "Bandra Waterfront Residence",
+                location: "Mumbai",
+                address: "Carter Road, Bandra West, Mumbai",
+                price: 32.00,
+                unit: "Cr",
+                type: "Apartment",
+                listing: "Sale",
+                beds: 4,
+                baths: 5,
+                area: "5,400 sq.ft",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+                badge: "Sea Facing",
+                featured: true
+            },
+            {
+                id: 4,
+                title: "Lutyens Contemporary Mansion",
+                location: "Delhi",
+                address: "Amrita Shergill Marg, Delhi",
+                price: 65.00,
+                unit: "Cr",
+                type: "Mansion",
+                listing: "Sale",
+                beds: 7,
+                baths: 8,
+                area: "18,000 sq.ft",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                badge: "Heritage",
+                featured: true
+            },
+            {
+                id: 5,
+                title: "Anjuna Luxury Beach Villa",
+                location: "Goa",
+                address: "Anjuna North, Goa",
+                price: 12.80,
+                unit: "Cr",
+                type: "Villa",
+                listing: "Sale",
+                beds: 4,
+                baths: 4,
+                area: "6,200 sq.ft",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+                badge: "Private Pool",
+                featured: true
+            },
+            {
+                id: 6,
+                title: "Koramangala Smart Penthouse",
+                location: "Bangalore",
+                address: "3rd Block, Koramangala, Bangalore",
+                price: 4.50,
+                unit: "Lakh/mo",
+                type: "Penthouse",
+                listing: "Rent",
+                beds: 3,
+                baths: 4,
+                area: "4,100 sq.ft",
+                image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80",
+                badge: "For Lease",
+                featured: true
+            }
+        ];
+
+        let currentHeroType = 'Buy';
+
+        function createPropertyCard(p) {
+            return `
+                <div class="bg-white rounded-2xl overflow-hidden border border-brand-border card-hover-effect flex flex-col justify-between">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-brand-charcoal/80 backdrop-blur-md text-brand-gold text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-brand-gold/30">
+                            ${p.badge}
+                        </div>
+                        <button onclick="toggleFavorite(this)" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 backdrop-blur-md text-gray-600 hover:text-red-500 flex items-center justify-center transition-colors">
+                            <i class="fa-regular fa-heart text-sm"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[11px] font-bold text-brand-gold uppercase tracking-wider">${p.type} • For ${p.listing}</span>
+                                <span class="text-xl font-serif font-bold text-brand-charcoal">₹ ${p.price} <span class="text-xs font-sans text-gray-500">${p.unit}</span></span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-1 hover:text-brand-gold transition-colors cursor-pointer" onclick="openModal()">${p.title}</h3>
+                            <p class="text-xs text-gray-500 font-light mb-6">
+                                <i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> ${p.address}
+                            </p>
+                        </div>
+
+                        <div>
+                            <div class="grid grid-cols-3 gap-2 py-3 border-t border-b border-gray-100 text-center text-xs text-gray-600 mb-6">
+                                <div><i class="fa-solid fa-bed text-brand-gold mr-1"></i> ${p.beds} BHK</div>
+                                <div><i class="fa-solid fa-bath text-brand-gold mr-1"></i> ${p.baths} Bath</div>
+                                <div><i class="fa-solid fa-ruler-combined text-brand-gold mr-1"></i> ${p.area}</div>
+                            </div>
+
+                            <button onclick="openModal()" class="w-full bg-brand-warmGray hover:bg-brand-gold text-brand-charcoal hover:text-white py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 border border-brand-border">
+                                View Estate Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProperties() {
+            const featuredGrid = document.getElementById('featured-grid');
+            if (featuredGrid) {
+                featuredGrid.innerHTML = PROPERTIES.slice(0, 6).map(p => createPropertyCard(p)).join('');
+            }
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const loc = document.getElementById('filter-location').value;
+            const listing = document.getElementById('filter-listing').value;
+            const type = document.getElementById('filter-type').value;
+            const sort = document.getElementById('filter-sort').value;
+
+            let filtered = PROPERTIES.filter(p => {
+                if (loc !== 'All' && p.location !== loc) return false;
+                if (listing !== 'All' && p.listing !== listing) return false;
+                if (type !== 'All' && p.type !== type) return false;
+                return true;
+            });
+
+            if (sort === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sort === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            const resultsGrid = document.getElementById('filter-results-grid');
+            const countLabel = document.getElementById('results-count');
+
+            if (resultsGrid) {
+                if (filtered.length === 0) {
+                    resultsGrid.innerHTML = `
+                        <div class="col-span-full py-12 text-center text-gray-500">
+                            <i class="fa-solid fa-building-circle-exclamation text-4xl text-brand-gold mb-3"></i>
+                            <h4 class="text-xl font-serif font-bold text-brand-charcoal">No Matching Estates Found</h4>
+                            <p class="text-xs font-light mt-1">Try resetting filters or adjusting search parameters.</p>
+                        </div>
+                    `;
+                } else {
+                    resultsGrid.innerHTML = filtered.map(p => createPropertyCard(p)).join('');
+                }
+            }
+
+            if (countLabel) {
+                countLabel.innerText = `Showing ${filtered.length} Verified Properties`;
+            }
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-location').value = 'All';
+            document.getElementById('filter-listing').value = 'All';
+            document.getElementById('filter-type').value = 'All';
+            document.getElementById('filter-sort').value = 'featured';
+            applyFilters();
+        }
+
+        function filterByLocation(city) {
+            document.getElementById('filter-location').value = city;
+            document.getElementById('filter-section').scrollIntoView({ behavior: 'smooth' });
+            applyFilters();
+        }
+
+        function setHeroSearchType(type) {
+            currentHeroType = type;
+            const buyBtn = document.getElementById('hero-toggle-buy');
+            const rentBtn = document.getElementById('hero-toggle-rent');
+            if (type === 'Buy') {
+                buyBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-brand-charcoal text-white transition-all';
+                rentBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand-charcoal transition-all';
+            } else {
+                rentBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-brand-charcoal text-white transition-all';
+                buyBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand-charcoal transition-all';
+            }
+        }
+
+        function handleHeroSearch(e) {
+            e.preventDefault();
+            const loc = document.getElementById('hero-location').value;
+            const type = document.getElementById('hero-type').value;
+
+            document.getElementById('filter-location').value = loc;
+            document.getElementById('filter-type').value = type;
+            document.getElementById('filter-listing').value = currentHeroType === 'Buy' ? 'Sale' : 'Rent';
+
+            document.getElementById('filter-section').scrollIntoView({ behavior: 'smooth' });
+            applyFilters();
+        }
+
+        function openModal() {
+            const modal = document.getElementById('visit-modal');
+            const content = modal.querySelector('.modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('visit-modal');
+            const content = modal.querySelector('.modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 4000);
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            showToast('Visit Scheduled', 'Our senior advisor will confirm your chauffeured itinerary shortly.');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Consultation Requested', 'Thank you for reaching out. We will contact you within 2 hours.');
+        }
+
+        function toggleFavorite(btn) {
+            const icon = btn.querySelector('i');
+            if (icon.classList.contains('fa-regular')) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid', 'text-red-500');
+            } else {
+                icon.classList.remove('fa-solid', 'text-red-500');
+                icon.classList.add('fa-regular');
+            }
+        }
+
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const isOpen = !content.classList.contains('hidden');
+
+            document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.fa-minus').forEach(i => {
+                i.classList.remove('fa-minus');
+                i.classList.add('fa-plus');
+            });
+
+            if (!isOpen) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProperties();
+
+            // Mobile menu listener
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+            // Sticky Navigation Animation
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('main-nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('glass-nav', 'py-3', 'text-brand-charcoal');
+                    nav.classList.remove('py-5', 'text-white');
+                } else {
+                    nav.classList.remove('glass-nav', 'py-3', 'text-brand-charcoal');
+                    nav.classList.add('py-5', 'text-white');
+                }
+            });
+
+            // Initialize Swiper Property Spotlight Gallery
+            new Swiper('.property-swiper', {
+                loop: true,
+                autoplay: { delay: 4000 },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            });
+
+            // Initialize Swiper Testimonial Carousel
+            new Swiper('.testimonial-swiper', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 20,
+                autoplay: { delay: 5000 },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                breakpoints: {
+                    768: { slidesPerView: 2, spaceBetween: 30 },
+                    1024: { slidesPerView: 3, spaceBetween: 30 }
+                }
+            });
+
+            // Register GSAP ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // GSAP Hero Entrance Animations
+            gsap.from('.hero-sub', { opacity: 0, y: -20, duration: 1, delay: 0.2 });
+            gsap.from('.hero-title', { opacity: 0, y: 30, duration: 1, delay: 0.4 });
+            gsap.from('.hero-desc', { opacity: 0, y: 30, duration: 1, delay: 0.6 });
+            gsap.from('.hero-btns', { opacity: 0, y: 30, duration: 1, delay: 0.8 });
+
+            // GSAP Counter Animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.to(counter, {
+                            innerText: target,
+                            duration: 2,
+                            snap: { innerText: 1 },
+                            ease: 'power1.out'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
