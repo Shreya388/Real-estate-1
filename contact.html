@@ -72,164 +72,79 @@
 <body class="bg-[#f8f7f4] text-[#171717]">
 
 
-<!-- =========================================================
+ <!-- =========================================================
      HEADER
 ========================================================= -->
 
-<header class="fixed top-0 left-0 w-full z-50
-               bg-white/95 backdrop-blur-md
-               border-b border-[#e8e4dc]">
+<header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
 
-    <div class="max-w-[1100px] mx-auto px-5 lg:px-0
-                h-[60px] flex items-center justify-between">
+    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 flex items-center justify-between">
 
-
-        <!-- LOGO -->
-
+        <!-- Logo -->
         <a href="#" class="flex items-center gap-3">
 
-            <div class="w-[36px] h-[36px]
-                        rounded-full
-                        bg-[#171717]
-                        border border-[#caa45d]
-                        flex items-center justify-center">
-
-                <span class="text-[#caa45d] text-[16px]">
-                    ♛
-                </span>
-
+            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
+                <span class="text-[#caa45d] text-[16px]">♛</span>
             </div>
 
-
             <div>
-
-                <div class="serif text-[22px]
-                            tracking-[2px] leading-none">
+                <div class="serif text-[22px] tracking-[2px] leading-none">
                     ELYSIAN
                 </div>
 
-                <div class="text-[8px]
-                            tracking-[2px]
-                            text-[#caa45d] mt-1">
+                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
                     ESTATE CONSULTANTS
                 </div>
-
             </div>
 
         </a>
 
 
-        <!-- DESKTOP NAVIGATION -->
+        <!-- Desktop Navigation -->
 
-        <nav class="hidden lg:flex items-center
-                    gap-7 text-[12px]
-                    tracking-[1px] font-medium">
+        <nav class="hidden lg:flex items-center gap-7 py-4 text-[12px] tracking-[1px] font-medium">
 
-            <a href="#" class="hover:text-[#caa45d] transition">
-                HOME
-            </a>
+            <a href="./index.html" class="hover:text-[#caa45d] transition">HOME</a>
+            <a href="./properties.html" class="hover:text-[#caa45d] transition">PROPERTIES</a>
+            <a href="./about.html" class="hover:text-[#caa45d] transition">ABOUT</a>
+            <a href="./services.html" class="hover:text-[#caa45d] transition">SERVICES</a>
+            <a href="./contact.html" class="text-[#caa45d]">CONTACT</a>
 
-            <a href="#" class="hover:text-[#caa45d] transition">
-                PROPERTIES
-            </a>
-
-            <a href="#" class="hover:text-[#caa45d] transition">
-                BUY
-            </a>
-
-            <a href="#" class="hover:text-[#caa45d] transition">
-                RENT
-            </a>
-
-            <a href="#" class="hover:text-[#caa45d] transition">
-                SELL
-            </a>
-
-            <a href="#" class="hover:text-[#caa45d] transition">
-                ABOUT
-            </a>
-
-            <a href="#" class="text-[#caa45d]">
-                SERVICES
-            </a>
-
-            <a href="#" class="hover:text-[#caa45d] transition">
-                LOCATIONS
-            </a>
-
-            <a href="#" class="hover:text-[#caa45d] transition">
-                CONTACT
-            </a>
-
-
-            <i data-lucide="search"
-               class="w-4 h-4 ml-2">
-            </i>
-
+            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
 
             <a href="#contact"
-               class="bg-[#caa45d]
-                      text-white
-                      px-5 py-3
-                      rounded-full
-                      text-[11px]
-                      tracking-[.5px]
-                      hover:bg-[#b58e48]
-                      transition">
-
+               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
                 SCHEDULE A VISIT
-
             </a>
 
         </nav>
 
 
-        <!-- MOBILE MENU -->
+        <!-- Mobile Menu -->
 
-        <button id="menuBtn"
-                class="lg:hidden">
-
+        <button id="menuBtn" class="lg:hidden">
             <i data-lucide="menu"></i>
-
         </button>
 
     </div>
 
 
-    <!-- MOBILE NAV -->
+    <!-- Mobile Navigation -->
 
     <div id="mobileMenu"
-         class="hidden lg:hidden
-                bg-white border-t border-[#eee]
-                px-6 py-6">
+         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
 
-        <div class="flex flex-col gap-5
-                    text-sm tracking-wide">
+        <div class="flex flex-col gap-5 text-sm tracking-wide">
 
-            <a href="#">HOME</a>
-            <a href="#">PROPERTIES</a>
-            <a href="#">BUY</a>
-            <a href="#">RENT</a>
-            <a href="#">SELL</a>
-            <a href="#">ABOUT</a>
-
-            <a href="#" class="text-[#caa45d]">
-                SERVICES
-            </a>
-
-            <a href="#">LOCATIONS</a>
-            <a href="#">CONTACT</a>
-
+            <a href="./index.html">HOME</a>
+            <a href="./properties.html" class="text-[#caa45d]">PROPERTIES</a>
+            <a href="./about.html">ABOUT</a>
+            <a href="./services.html">SERVICES</a>
+            <a href="./contact.html">CONTACT</a>
 
             <a href="#contact"
-               class="bg-[#caa45d]
-                      text-white
-                      text-center
-                      py-3
-                      rounded-full">
-
+               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
                 SCHEDULE A VISIT
-
             </a>
 
         </div>
@@ -237,7 +152,6 @@
     </div>
 
 </header>
-
 
 
 <!-- =========================================================

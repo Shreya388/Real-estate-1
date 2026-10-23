@@ -171,68 +171,86 @@
         </div>
     </div>
 
-    <header id="main-nav" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-5 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center space-x-3 group">
-                    
-                    <div>
-                        <span class="font-serif text-2xl font-bold tracking-wider block leading-none nav-title">ELYSIAN</span>
-                        <span class="text-[9px] tracking-[0.25em] uppercase text-brand-gold block mt-1 nav-subtitle">Estate Consultants</span>
-                    </div>
-                </a>
+   <!-- =========================================================
+     HEADER
+========================================================= -->
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold">
-                    <a href="#hero" class="hover:text-brand-gold transition-colors text-brand-gold">Home</a>
-                    <a href="#featured" class="hover:text-brand-gold transition-colors">Properties</a>
-                    <a href="#filter-section" class="hover:text-brand-gold transition-colors">Buy</a>
-                    <a href="#filter-section" class="hover:text-brand-gold transition-colors">Rent</a>
-                    <a href="#investment" class="hover:text-brand-gold transition-colors">Sell</a>
-                    <a href="#why-choose-us" class="hover:text-brand-gold transition-colors">About</a>
-                    <a href="#services" class="hover:text-brand-gold transition-colors">Services</a>
-                    <a href="#locations" class="hover:text-brand-gold transition-colors">Locations</a>
-                    <a href="#contact" class="hover:text-brand-gold transition-colors">Contact</a>
-                </nav>
+<header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
 
-                <!-- Right Actions -->
-                <div class="hidden lg:flex items-center space-x-5">
-                    <button onclick="document.getElementById('filter-section').scrollIntoView({behavior: 'smooth'})" class="text-sm hover:text-brand-gold transition-colors p-2" title="Search Properties">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <button onclick="openModal()" class="bg-brand-gold hover:bg-brand-goldDark text-white px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5">
-                        Schedule a Visit
-                    </button>
+    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3">
+
+            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
+                <span class="text-[#caa45d] text-[16px]">♛</span>
+            </div>
+
+            <div>
+                <div class="serif text-[22px] tracking-[2px] leading-none">
+                    ELYSIAN
                 </div>
 
-                <!-- Mobile Hamburger Button -->
-                <div class="lg:hidden flex items-center space-x-3">
-                    <button id="mobile-menu-btn" class="text-2xl focus:outline-none p-1">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
+                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
+                    ESTATE CONSULTANTS
                 </div>
             </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation -->
+
+        <nav class="hidden lg:flex items-center gap-7 py-4 text-[12px] tracking-[1px] font-medium">
+
+            <a href="/" class="text-[#caa45d]">HOME</a>
+            <a href="./properties.html" class="hover:text-[#caa45d] transition">PROPERTIES</a>
+            <a href="./about.html" class="hover:text-[#caa45d] transition">ABOUT</a>
+            <a href="./services.html" class="hover:text-[#caa45d] transition">SERVICES</a>
+            <a href="./contact.html" class="hover:text-[#caa45d] transition">CONTACT</a>
+
+            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
+
+            <a href="#contact"
+               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
+                SCHEDULE A VISIT
+            </a>
+
+        </nav>
+
+
+        <!-- Mobile Menu -->
+
+        <button id="menuBtn" class="lg:hidden">
+            <i data-lucide="menu"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Mobile Navigation -->
+
+    <div id="mobileMenu"
+         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
+
+        <div class="flex flex-col gap-5 text-sm tracking-wide">
+
+            <a href="./index.html" class="text-[#caa45d]">HOME</a>
+            <a href="./properties.html">PROPERTIES</a>
+            <a href="./about.html">ABOUT</a>
+            <a href="./services.html">SERVICES</a>
+            <a href="./contact.html">CONTACT</a>
+
+            <a href="#contact"
+               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
+                SCHEDULE A VISIT
+            </a>
+
         </div>
 
-        <!-- Mobile Drawer Navigation -->
-        <div id="mobile-menu" class="hidden fixed inset-x-0 top-[72px] bg-white border-b border-brand-border shadow-2xl p-6 lg:hidden text-brand-charcoal transition-all">
-            <nav class="flex flex-col space-y-4 text-sm font-semibold tracking-wider uppercase">
-                <a href="#hero" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Home</a>
-                <a href="#featured" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Properties</a>
-                <a href="#filter-section" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Buy & Rent Discovery</a>
-                <a href="#services" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Services</a>
-                <a href="#locations" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Locations</a>
-                <a href="#why-choose-us" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">About Us</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-brand-gold transition-colors py-1">Contact</a>
-            </nav>
-            <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-3">
-                <button onclick="openModal(); toggleMobileMenu();" class="w-full bg-brand-gold text-white py-3 rounded-xl font-semibold text-xs uppercase tracking-widest text-center shadow-lg">
-                    Schedule a Visit
-                </button>
-            </div>
-        </div>
-    </header>
+    </div>
+
+</header>
 
     <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-32 overflow-hidden">
         <!-- Hero Background Image/Video representation -->
@@ -543,7 +561,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Property Buying</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Curated access to off-market luxury villas, sky penthouses, and architectural landmarks.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>Inquire Now</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -555,7 +573,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Property Selling</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Targeted international marketing strategies maximizing asset value for property owners.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>List Property</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -567,7 +585,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Luxury Rentals</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Exclusive long-term leases for diplomats, C-suite executives, and luxury lifestyle seekers.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>Explore Leases</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -579,7 +597,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Investment Consulting</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Data-driven portfolio diversification across high-appreciation micro-markets.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>Consult Expert</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -591,7 +609,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Property Valuation</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">RERA-certified valuation reports for legal, tax, and institutional transactions.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>Get Valuation</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -603,7 +621,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">NRI Property Desk</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">End-to-end legal, tax repatriation, and tenant management solutions for non-resident Indians.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>NRI Assistance</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -615,7 +633,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Commercial Assets</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">Pre-leased office floors, Grade-A retail hubs, and high-yield institutional assets.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>View Commercial</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -627,7 +645,7 @@
                     </div>
                     <h3 class="text-xl font-serif font-bold text-brand-charcoal mb-3">Asset Management</h3>
                     <p class="text-gray-500 text-xs leading-relaxed font-light mb-4">White-glove property maintenance, tenant vetting, and rental collection oversight.</p>
-                    <a href="#contact" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
+                    <a href="./contact.html" class="text-xs font-bold text-brand-gold hover:text-brand-goldDark uppercase tracking-wider flex items-center space-x-1">
                         <span>Manage Estate</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </a>
                 </div>
@@ -1198,8 +1216,8 @@
                         <li><a href="#hero" class="hover:text-brand-gold transition-colors">Home</a></li>
                         <li><a href="#featured" class="hover:text-brand-gold transition-colors">Featured Estates</a></li>
                         <li><a href="#filter-section" class="hover:text-brand-gold transition-colors">Buy & Rent Engine</a></li>
-                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Services</a></li>
-                        <li><a href="#why-choose-us" class="hover:text-brand-gold transition-colors">About Us</a></li>
+                        <li><a href="./services.html" class="hover:text-brand-gold transition-colors">Services</a></li>
+                        <li><a href="./about.html" class="hover:text-brand-gold transition-colors">About Us</a></li>
                     </ul>
                 </div>
 

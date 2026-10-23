@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curated Luxury Properties | Elysian Estate Consultants</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#C5A059',
+                            light: '#D4AF37',
+                            dark: '#9A7B3E',
+                            subtle: '#FAF6E9',
+                        },
+                        charcoal: {
+                            DEFAULT: '#1A1A1A',
+                            soft: '#2D2D2D',
+                            light: '#4A4A4A',
+                            muted: '#71717A',
+                        },
+                        offwhite: {
+                            DEFAULT: '#F9F8F6',
+                            warm: '#F3F0EC',
+                            card: '#FFFFFF',
+                        },
+                        brand: {
+                            border: '#E5E0D8',
+                            hover: '#FAF7F2'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 224, 216, 0.7);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F3F0EC;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 3px;
+        }
+        .slider-thumb::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #C5A059;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-offwhite text-charcoal font-sans antialiased selection:bg-gold selection:text-white flex flex-col min-h-screen">
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-24 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
+
+    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3">
+
+            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
+                <span class="text-[#caa45d] text-[16px]">♛</span>
+            </div>
+
+            <div>
+                <div class="serif text-[22px] tracking-[2px] leading-none">
+                    ELYSIAN
+                </div>
+
+                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
+                    ESTATE CONSULTANTS
+                </div>
+            </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation -->
+
+        <nav class="hidden lg:flex items-center gap-7 py-4 text-[12px] tracking-[1px] font-medium">
+
+            <a href="./index.html" class="hover:text-[#caa45d] transition">HOME</a>
+            <a href="./properties.html" class="text-[#caa45d]">PROPERTIES</a>
+            <a href="./about.html" class="hover:text-[#caa45d] transition">ABOUT</a>
+            <a href="./services.html" class="hover:text-[#caa45d] transition">SERVICES</a>
+            <a href="./contact.html" class="hover:text-[#caa45d] transition">CONTACT</a>
+
+            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
+
+            <a href="#contact"
+               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
+                SCHEDULE A VISIT
+            </a>
+
+        </nav>
+
+
+        <!-- Mobile Menu -->
+
+        <button id="menuBtn" class="lg:hidden">
+            <i data-lucide="menu"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Mobile Navigation -->
+
+    <div id="mobileMenu"
+         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
+
+        <div class="flex flex-col gap-5 text-sm tracking-wide">
+
+            <a href="./index.html">HOME</a>
+            <a href="./properties.html" class="text-[#caa45d]">PROPERTIES</a>
+            <a href="./about.html">ABOUT</a>
+            <a href="./services.html">SERVICES</a>
+            <a href="./contact.html">CONTACT</a>
+
+            <a href="#contact"
+               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
+                SCHEDULE A VISIT
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-grow pt-20">
+
+        <!-- HERO & BREADCRUMB BANNER -->
+        <section class="bg-gradient-to-b from-offwhite-warm to-offwhite py-12 md:py-16 border-b border-brand-border relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <!-- Breadcrumbs -->
+                <nav class="flex items-center text-xs text-charcoal-muted gap-2 mb-4 font-medium uppercase tracking-wider">
+                    <a href="#" class="hover:text-gold transition-colors">Home</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-gold">Properties Portfolio</span>
+                </nav>
+
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold block mb-2">Exquisite Living Portfolio</span>
+                        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal font-semibold tracking-tight">Curated Luxury Properties</h1>
+                    </div>
+                    <p class="text-charcoal-light text-sm md:text-base max-w-md font-light leading-relaxed">
+                        Explore our handpicked collection of architectural masterpieces, prime estates, and waterfront residences across premier global addresses.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN PROPERTY LISTING SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col lg:flex-row gap-8">
+
+                <!-- FILTERS SIDEBAR (Desktop & Mobile Dropdown) -->
+                <aside class="w-full lg:w-80 flex-shrink-0">
+                    <div class="bg-white p-6 rounded-xl border border-brand-border shadow-sm sticky top-28">
+                        <div class="flex items-center justify-between pb-4 mb-5 border-b border-brand-border">
+                            <h2 class="font-serif text-lg font-semibold text-charcoal flex items-center gap-2">
+                                <i class="fa-solid fa-sliders text-gold text-sm"></i> Filter Estates
+                            </h2>
+                            <button id="resetFiltersBtn" class="text-xs text-charcoal-muted hover:text-gold underline transition-colors flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-right text-[10px]"></i> Reset
+                            </button>
+                        </div>
+
+                        <form id="filterForm" onsubmit="event.preventDefault();" class="space-y-5">
+                            <!-- Keyword Search -->
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-charcoal-light mb-2 tracking-wider">Search Keyword</label>
+                                <div class="relative">
+                                    <input type="text" id="searchInput" placeholder="Villa, Malibu, Penthouse..." class="w-full pl-9 pr-4 py-2.5 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold transition-colors">
+                                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-charcoal-muted text-xs"></i>
+                                </div>
+                            </div>
+
+                            <!-- Listing Type (Sale / Rent) -->
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-charcoal-light mb-2 tracking-wider">Listing Type</label>
+                                <div class="grid grid-cols-3 gap-1 bg-offwhite p-1 rounded border border-brand-border">
+                                    <button type="button" data-type="all" class="type-btn active text-xs font-medium py-1.5 rounded transition-all bg-white text-charcoal shadow-sm">All</button>
+                                    <button type="button" data-type="sale" class="type-btn text-xs font-medium py-1.5 rounded transition-all text-charcoal-muted hover:text-charcoal">For Sale</button>
+                                    <button type="button" data-type="rent" class="type-btn text-xs font-medium py-1.5 rounded transition-all text-charcoal-muted hover:text-charcoal">For Rent</button>
+                                </div>
+                            </div>
+
+                            <!-- City / Location -->
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-charcoal-light mb-2 tracking-wider">Location</label>
+                                <select id="locationSelect" class="w-full px-3 py-2.5 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold transition-colors cursor-pointer">
+                                    <option value="all">All Locations</option>
+                                    <option value="Dubai, UAE">Dubai, UAE</option>
+                                    <option value="Malibu, CA">Malibu, CA</option>
+                                    <option value="New York, NY">New York, NY</option>
+                                    <option value="Aspen, CO">Aspen, CO</option>
+                                    <option value="Monaco">Monaco</option>
+                                    <option value="London, UK">London, UK</option>
+                                </select>
+                            </div>
+
+                            <!-- Property Archetype -->
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-charcoal-light mb-2 tracking-wider">Archetype</label>
+                                <select id="typeSelect" class="w-full px-3 py-2.5 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold transition-colors cursor-pointer">
+                                    <option value="all">All Archetypes</option>
+                                    <option value="Villa">Villa</option>
+                                    <option value="Penthouse">Penthouse</option>
+                                    <option value="Mansion">Mansion</option>
+                                    <option value="Apartment">Luxury Apartment</option>
+                                    <option value="Estate">Waterfront Estate</option>
+                                </select>
+                            </div>
+
+                            <!-- Max Price Range -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="text-xs uppercase font-semibold text-charcoal-light tracking-wider">Max Price</label>
+                                    <span id="priceDisplay" class="text-xs font-bold text-gold">$50,000,000</span>
+                                </div>
+                                <input type="range" id="priceRange" min="2000000" max="50000000" step="1000000" value="50000000" class="w-full h-1.5 bg-offwhite-warm rounded-lg appearance-none cursor-pointer slider-thumb">
+                                <div class="flex justify-between text-[10px] text-charcoal-muted mt-1 font-mono">
+                                    <span>$2M</span>
+                                    <span>$50M+</span>
+                                </div>
+                            </div>
+
+                            <!-- BHK / Bedrooms -->
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-charcoal-light mb-2 tracking-wider">Bedrooms (BHK)</label>
+                                <div class="flex gap-2">
+                                    <button type="button" data-bhk="all" class="bhk-btn flex-1 py-2 text-xs border border-brand-border rounded font-medium active bg-gold text-white border-gold">Any</button>
+                                    <button type="button" data-bhk="3" class="bhk-btn flex-1 py-2 text-xs border border-brand-border rounded font-medium hover:border-gold">3+</button>
+                                    <button type="button" data-bhk="4" class="bhk-btn flex-1 py-2 text-xs border border-brand-border rounded font-medium hover:border-gold">4+</button>
+                                    <button type="button" data-bhk="5" class="bhk-btn flex-1 py-2 text-xs border border-brand-border rounded font-medium hover:border-gold">5+</button>
+                                    <button type="button" data-bhk="6" class="bhk-btn flex-1 py-2 text-xs border border-brand-border rounded font-medium hover:border-gold">6+</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </aside>
+
+                <!-- PROPERTIES LISTING AREA -->
+                <div class="flex-1">
+
+                    <!-- LISTING CONTROL BAR -->
+                    <div class="bg-white p-4 rounded-xl border border-brand-border shadow-sm mb-6 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-semibold text-charcoal">Results:</span>
+                            <span id="propertyCount" class="text-xs font-bold bg-gold/10 text-gold px-2.5 py-1 rounded-full border border-gold/20">0 Estates Available</span>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <!-- Sort Dropdown -->
+                            <div class="flex items-center gap-2">
+                                <label for="sortSelect" class="text-xs text-charcoal-muted font-medium hidden sm:inline">Sort By:</label>
+                                <select id="sortSelect" class="bg-offwhite border border-brand-border text-xs rounded px-2.5 py-1.5 text-charcoal focus:outline-none focus:border-gold cursor-pointer">
+                                    <option value="featured">Featured First</option>
+                                    <option value="price-asc">Price: Low to High</option>
+                                    <option value="price-desc">Price: High to Low</option>
+                                    <option value="area-desc">Area: Largest First</option>
+                                </select>
+                            </div>
+
+                            <!-- Layout View Switcher -->
+                            <div class="flex items-center border border-brand-border rounded p-0.5 bg-offwhite">
+                                <button id="gridViewBtn" class="p-1.5 text-xs rounded bg-white text-gold shadow-sm transition-all" title="Grid View">
+                                    <i class="fa-solid fa-border-all"></i>
+                                </button>
+                                <button id="listViewBtn" class="p-1.5 text-xs rounded text-charcoal-muted hover:text-charcoal transition-all" title="List View">
+                                    <i class="fa-solid fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROPERTIES CARDS CONTAINER -->
+                    <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
+                        <!-- Dynamic Property Cards Inject Here -->
+                    </div>
+
+                    <!-- NO RESULTS MESSAGE -->
+                    <div id="noResults" class="hidden bg-white rounded-xl p-12 text-center border border-brand-border shadow-sm">
+                        <div class="w-16 h-16 bg-gold/10 text-gold rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                            <i class="fa-solid fa-house-chimney-crack"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-semibold text-charcoal mb-2">No Matching Estates Found</h3>
+                        <p class="text-charcoal-muted text-sm max-w-md mx-auto mb-6">
+                            We could not find any properties matching your exact criteria. Try broadening your parameters or resetting filters.
+                        </p>
+                        <button onclick="resetAllFilters()" class="px-5 py-2.5 bg-gold text-white text-xs font-semibold uppercase tracking-wider rounded hover:bg-gold-dark transition-colors">
+                            Reset Search Filters
+                        </button>
+                    </div>
+
+                    <!-- LOAD MORE / PAGINATION -->
+                    <div id="paginationContainer" class="mt-10 text-center">
+                        <button id="loadMoreBtn" class="px-8 py-3 bg-white border border-brand-border text-charcoal text-xs uppercase font-semibold tracking-widest rounded hover:bg-charcoal hover:text-white hover:border-charcoal transition-all duration-300 shadow-sm">
+                            Load More Estates
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-charcoal text-white pt-16 pb-12 border-t-4 border-gold mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Brand Column -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full border border-gold flex items-center justify-center bg-gold/10">
+                            <span class="font-serif text-lg font-bold text-gold">E</span>
+                        </div>
+                        <span class="font-serif text-xl font-semibold tracking-wider text-white">ELYSIAN</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed font-light">
+                        Pioneering ultra-luxury real estate advisory for distinguished global clients. Representing architectural icons and prime residential developments worldwide.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded border border-gray-700 flex items-center justify-center text-xs text-gray-400 hover:text-gold hover:border-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded border border-gray-700 flex items-center justify-center text-xs text-gray-400 hover:text-gold hover:border-gold transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-8 h-8 rounded border border-gray-700 flex items-center justify-center text-xs text-gray-400 hover:text-gold hover:border-gold transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-serif text-sm font-semibold text-gold tracking-wider uppercase mb-4">Portfolios</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-400 font-light">
+                        <li><a href="#" class="hover:text-white transition-colors">Waterfront Villas</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sky Penthouses</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Private Islands</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Historic Manors</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Alpine Chalets</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Office -->
+                <div>
+                    <h4 class="font-serif text-sm font-semibold text-gold tracking-wider uppercase mb-4">Global Headquarters</h4>
+                    <ul class="space-y-3 text-xs text-gray-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-gold mt-0.5"></i>
+                            <span>740 Park Avenue, Penthouse B, New York, NY 10021</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-gold"></i>
+                            <span>+1 (800) 888-ELYSIAN</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-envelope text-gold"></i>
+                            <span>concierge@elysianestates.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter / Inquiry -->
+                <div>
+                    <h4 class="font-serif text-sm font-semibold text-gold tracking-wider uppercase mb-4">Private Dispatch</h4>
+                    <p class="text-xs text-gray-400 mb-3 font-light">Subscribe to receive exclusive off-market listings and quarterly market reports.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Subscribed to private dispatch');" class="flex flex-col gap-2">
+                        <input type="email" placeholder="Enter your email" required class="bg-charcoal-soft border border-gray-700 text-xs px-3 py-2.5 rounded text-white focus:outline-none focus:border-gold">
+                        <button type="submit" class="bg-gold text-white text-xs uppercase tracking-widest font-semibold py-2.5 rounded hover:bg-gold-dark transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- RERA & Copyright Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-gray-500 gap-4">
+                <div class="space-y-1 text-center md:text-left">
+                    <p>© 2026 Elysian Estate Consultants LLC. All Rights Reserved.</p>
+                    <p class="text-[10px] text-gray-600">RERA Registration No: RERA-PERMIT-98472019 | Equal Housing Opportunity</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">RERA Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROPERTY QUICK-VIEW DRAWER MODAL -->
+    <div id="quickViewDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div class="fixed inset-y-0 right-0 max-w-2xl w-full bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="drawerPanel">
+            
+            <!-- Drawer Header -->
+            <div class="p-4 sm:p-6 border-b border-brand-border flex items-center justify-between bg-offwhite">
+                <span class="text-xs font-semibold uppercase tracking-widest text-gold" id="qvCategory">Villa</span>
+                <button onclick="closeQuickView()" class="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-charcoal hover:bg-charcoal hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Drawer Content Body -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6" id="qvContent">
+                <!-- Dynamic Content Hydrated by JS -->
+            </div>
+
+            <!-- Drawer Footer CTA -->
+            <div class="p-6 border-t border-brand-border bg-offwhite flex gap-4">
+                <button id="qvBookBtn" class="flex-1 py-3 bg-gold text-white text-xs uppercase tracking-widest font-semibold rounded hover:bg-gold-dark transition-colors">
+                    Schedule Private Visit
+                </button>
+                <button id="qvSaveBtn" class="px-4 py-3 border border-brand-border bg-white text-charcoal rounded hover:border-gold hover:text-gold transition-colors">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCHEDULE A PRIVATE VISIT MODAL -->
+    <div id="visitModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl border border-brand-border max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-fadeIn">
+            <button onclick="closeVisitModal()" class="absolute top-4 right-4 text-charcoal-muted hover:text-charcoal text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-semibold text-gold tracking-widest uppercase">VIP Concierge Service</span>
+                <h3 class="font-serif text-2xl font-semibold text-charcoal">Schedule Private Tour</h3>
+                <p class="text-xs text-charcoal-muted mt-1">Request an exclusive walkthrough or confidential viewing appointment.</p>
+            </div>
+
+            <form id="visitForm" onsubmit="handleVisitSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Select Property</label>
+                    <select id="modalPropertySelect" class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Full Name *</label>
+                        <input type="text" required placeholder="John Doe" class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Phone Number *</label>
+                        <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Email Address *</label>
+                    <input type="email" required placeholder="john@example.com" class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Preferred Date</label>
+                        <input type="date" required class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Preferred Time</label>
+                        <select class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold">
+                            <option>Morning (10 AM - 12 PM)</option>
+                            <option>Afternoon (1 PM - 4 PM)</option>
+                            <option>Sunset (5 PM - 7 PM)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-charcoal-light mb-1">Special Requirements / Notes</label>
+                    <textarea rows="2" placeholder="Helipad access required, confidential NDA requested..." class="w-full px-3 py-2 bg-offwhite text-sm text-charcoal border border-brand-border rounded focus:outline-none focus:border-gold"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gold text-white text-xs uppercase tracking-widest font-bold rounded hover:bg-gold-dark transition-colors shadow">
+                    Confirm Consultation Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SAVED PROPERTIES DRAWER MODAL -->
+    <div id="savedDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="savedPanel">
+            <div class="p-6 border-b border-brand-border flex items-center justify-between bg-offwhite">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-heart text-gold"></i>
+                    <h3 class="font-serif font-semibold text-charcoal text-lg">Saved Estates</h3>
+                </div>
+                <button onclick="closeSavedDrawer()" class="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-charcoal hover:bg-charcoal hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-4" id="savedItemsContainer">
+                <!-- Dynamically Rendered Saved Cards -->
+            </div>
+
+            <div class="p-6 border-t border-brand-border bg-offwhite">
+                <button onclick="openVisitModal()" class="w-full py-3 bg-charcoal text-white text-xs uppercase tracking-widest font-semibold rounded hover:bg-gold transition-colors">
+                    Inquire All Saved Properties
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // LUXURY REAL ESTATE MOCK DATASET
+        const PROPERTIES_DATA = [
+            {
+                id: 1,
+                title: "The Belvedere Oceanfront Mansion",
+                location: "Malibu, CA",
+                price: 28500000,
+                priceDisplay: "$28,500,000",
+                type: "sale",
+                archetype: "Mansion",
+                bhk: 6,
+                baths: 8,
+                sqft: 12400,
+                sqftDisplay: "12,400 sqft",
+                badge: "Off-Market Exclusive",
+                image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+                description: "Commanding panoramic Pacific Ocean views, this trophy architectural compound features private beach access, infinity pool, 10-car gallery garage, and state-of-the-art wellness spa.",
+                specs: ["Oceanfront Access", "Infinity Pool", "Private Helipad", "Smart Home Automation"]
+            },
+            {
+                id: 2,
+                title: "Sky Penthouse at The Royal Tower",
+                location: "Dubai, UAE",
+                price: 18200000,
+                priceDisplay: "$18,200,000",
+                type: "sale",
+                archetype: "Penthouse",
+                bhk: 4,
+                baths: 5,
+                sqft: 8500,
+                sqftDisplay: "8,500 sqft",
+                badge: "Newly Listed",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+                description: "A triplex crown jewel overlooking the Burj Khalifa and Arabian Gulf, complete with private sky deck, private elevator, plunge pool, and 24/7 white-glove butler services.",
+                specs: ["360° Skyline Views", "Private Elevator", "Temperature Controlled Pool", "Wine Cellar"]
+            },
+            {
+                id: 3,
+                title: "The Glass Pavilion Modern Villa",
+                location: "Aspen, CO",
+                price: 14500000,
+                priceDisplay: "$14,500,000",
+                type: "sale",
+                archetype: "Villa",
+                bhk: 5,
+                baths: 6,
+                sqft: 9200,
+                sqftDisplay: "9,200 sqft",
+                badge: "Mountain Sanctuary",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+                description: "Seamless ski-in/ski-out architectural masterpiece surrounded by pristine aspen groves. Heated outdoor terraces, fire features, and custom timber joinery throughout.",
+                specs: ["Ski-In / Ski-Out", "Heated Driveway", "Custom Sauna", "Outdoor Fire Pit"]
+            },
+            {
+                id: 4,
+                title: "Monaco Harbor Waterfront Estate",
+                location: "Monaco",
+                price: 42000000,
+                priceDisplay: "$42,000,000",
+                type: "sale",
+                archetype: "Estate",
+                bhk: 7,
+                baths: 9,
+                sqft: 15100,
+                sqftDisplay: "15,100 sqft",
+                badge: "Trophy Asset",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+                description: "Overlooking the Formula 1 Grand Prix circuit and Port Hercule yacht basin. Historic Belle Époque restoration with contemporary interior grandeur.",
+                specs: ["Yacht Mooring", "Grand Ballroom", "Security Citadel", "Commercial Kitchen"]
+            },
+            {
+                id: 5,
+                title: "Central Park West Duplex",
+                location: "New York, NY",
+                price: 65000,
+                priceDisplay: "$65,000 / mo",
+                type: "rent",
+                archetype: "Apartment",
+                bhk: 3,
+                baths: 4,
+                sqft: 4800,
+                sqftDisplay: "4,800 sqft",
+                badge: "High Floor",
+                image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+                description: "Unrivaled direct Central Park vistas from full height floor-to-ceiling windows. Featuring custom Boffi kitchen, Herringbone oak floors, and white glove concierge.",
+                specs: ["Direct Park Views", "24/7 Doorman", "Fitness Center", "Storage Vault"]
+            },
+            {
+                id: 6,
+                title: "Mayfair Heritage Townhouse",
+                location: "London, UK",
+                price: 24000000,
+                priceDisplay: "£19,500,000 ($24M)",
+                type: "sale",
+                archetype: "Mansion",
+                bhk: 5,
+                baths: 6,
+                sqft: 7900,
+                sqftDisplay: "7,900 sqft",
+                badge: "Grade II Listed",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+                description: "Elegantly restored Georgian Grade II townhouse in prestigious Mayfair. Complete with private garden courtyard, cinema lounge, and subterranean pool suite.",
+                specs: ["Private Courtyard", "Subterranean Pool", "Cinema Room", "Elevator All Floors"]
+            }
+        ];
+
+        // STATE MANAGEMENT
+        let activeFilters = {
+            search: "",
+            type: "all",
+            location: "all",
+            archetype: "all",
+            maxPrice: 50000000,
+            bhk: "all",
+            sort: "featured"
+        };
+
+        let currentLayout = "grid"; // 'grid' | 'list'
+        let savedPropertyIds = new Set();
+        let visibleCount = 6;
+
+        // DOM ELEMENTS
+        const propertiesGrid = document.getElementById('propertiesGrid');
+        const propertyCount = document.getElementById('propertyCount');
+        const noResults = document.getElementById('noResults');
+        const priceRange = document.getElementById('priceRange');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const searchInput = document.getElementById('searchInput');
+        const locationSelect = document.getElementById('locationSelect');
+        const typeSelect = document.getElementById('typeSelect');
+        const sortSelect = document.getElementById('sortSelect');
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const listViewBtn = document.getElementById('listViewBtn');
+        const savedCountBadge = document.getElementById('savedCountBadge');
+        const savedCountBadgeMobile = document.getElementById('savedCountBadgeMobile');
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProperties();
+            populateModalSelect();
+            setupEventListeners();
+        });
+
+        // EVENT LISTENERS SETUP
+        function setupEventListeners() {
+            // Mobile Menu Toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.toggle('hidden');
+            });
+
+            // Filter Inputs
+            searchInput.addEventListener('input', (e) => {
+                activeFilters.search = e.target.value.toLowerCase();
+                renderProperties();
+            });
+
+            locationSelect.addEventListener('change', (e) => {
+                activeFilters.location = e.target.value;
+                renderProperties();
+            });
+
+            typeSelect.addEventListener('change', (e) => {
+                activeFilters.archetype = e.target.value;
+                renderProperties();
+            });
+
+            sortSelect.addEventListener('change', (e) => {
+                activeFilters.sort = e.target.value;
+                renderProperties();
+            });
+
+            priceRange.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                activeFilters.maxPrice = val;
+                priceDisplay.textContent = val >= 50000000 ? "$50,000,000+" : `$${(val / 1000000).toFixed(1)}M`;
+                renderProperties();
+            });
+
+            // Type Buttons (Sale/Rent/All)
+            document.querySelectorAll('.type-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.type-btn').forEach(b => {
+                        b.classList.remove('bg-white', 'text-charcoal', 'shadow-sm');
+                        b.classList.add('text-charcoal-muted');
+                    });
+                    this.classList.add('bg-white', 'text-charcoal', 'shadow-sm');
+                    this.classList.remove('text-charcoal-muted');
+                    activeFilters.type = this.dataset.type;
+                    renderProperties();
+                });
+            });
+
+            // BHK Buttons
+            document.querySelectorAll('.bhk-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.bhk-btn').forEach(b => {
+                        b.classList.remove('bg-gold', 'text-white', 'border-gold');
+                        b.classList.add('border-brand-border');
+                    });
+                    this.classList.add('bg-gold', 'text-white', 'border-gold');
+                    activeFilters.bhk = this.dataset.bhk;
+                    renderProperties();
+                });
+            });
+
+            // Reset Button
+            document.getElementById('resetFiltersBtn').addEventListener('click', resetAllFilters);
+
+            // Layout Toggles
+            gridViewBtn.addEventListener('click', () => setLayout('grid'));
+            listViewBtn.addEventListener('click', () => setLayout('list'));
+
+            // Saved Drawers Triggers
+            document.getElementById('openSavedBtn').addEventListener('click', openSavedDrawer);
+            document.getElementById('openSavedBtnMobile').addEventListener('click', openSavedDrawer);
+        }
+
+        // FILTER & RENDER ENGINE
+        function renderProperties() {
+            let filtered = PROPERTIES_DATA.filter(item => {
+                // Search Keyword
+                if (activeFilters.search) {
+                    const matchTitle = item.title.toLowerCase().includes(activeFilters.search);
+                    const matchLoc = item.location.toLowerCase().includes(activeFilters.search);
+                    const matchArch = item.archetype.toLowerCase().includes(activeFilters.search);
+                    if (!matchTitle && !matchLoc && !matchArch) return false;
+                }
+
+                // Listing Type
+                if (activeFilters.type !== "all" && item.type !== activeFilters.type) return false;
+
+                // Location
+                if (activeFilters.location !== "all" && item.location !== activeFilters.location) return false;
+
+                // Archetype
+                if (activeFilters.archetype !== "all" && item.archetype !== activeFilters.archetype) return false;
+
+                // Max Price
+                if (item.price > activeFilters.maxPrice) return false;
+
+                // BHK Bedrooms
+                if (activeFilters.bhk !== "all") {
+                    const bhkNum = parseInt(activeFilters.bhk);
+                    if (item.bhk < bhkNum) return false;
+                }
+
+                return true;
+            });
+
+            // Sorting Logic
+            if (activeFilters.sort === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (activeFilters.sort === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (activeFilters.sort === 'area-desc') {
+                filtered.sort((a, b) => b.sqft - a.sqft);
+            }
+
+            // Update Counter
+            propertyCount.textContent = `${filtered.length} Estates Available`;
+
+            // Display Empty State or Render
+            if (filtered.length === 0) {
+                propertiesGrid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                propertiesGrid.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            }
+
+            // Render Cards
+            propertiesGrid.innerHTML = filtered.slice(0, visibleCount).map(property => createPropertyCardHTML(property)).join('');
+        }
+
+        // CREATE PROPERTY CARD HTML
+        function createPropertyCardHTML(item) {
+            const isSaved = savedPropertyIds.has(item.id);
+            const isList = currentLayout === 'list';
+
+            if (isList) {
+                return `
+                <div class="bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-xl hover:border-gold/50 transition-all duration-300 flex flex-col md:flex-row group">
+                    <div class="relative md:w-2/5 h-64 md:h-auto overflow-hidden">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-3 left-3 bg-gold text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">
+                            ${item.badge}
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-3/5 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-semibold text-gold tracking-widest uppercase"><i class="fa-solid fa-location-dot mr-1"></i>${item.location}</span>
+                                <button onclick="toggleSaveProperty(${item.id})" class="text-lg transition-colors ${isSaved ? 'text-red-500' : 'text-charcoal-muted hover:text-gold'}">
+                                    <i class="${isSaved ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                                </button>
+                            </div>
+                            <h3 class="font-serif text-xl font-semibold text-charcoal group-hover:text-gold transition-colors">${item.title}</h3>
+                            <p class="text-xs text-charcoal-light mt-2 line-clamp-2 leading-relaxed">${item.description}</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border flex items-center justify-between">
+                            <div class="flex items-center gap-4 text-xs text-charcoal-muted">
+                                <span><strong class="text-charcoal">${item.bhk}</strong> Beds</span>
+                                <span><strong class="text-charcoal">${item.baths}</strong> Baths</span>
+                                <span><strong class="text-charcoal">${item.sqftDisplay}</strong></span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs uppercase text-charcoal-muted block">Guide Price</span>
+                                <span class="font-serif text-lg font-bold text-charcoal">${item.priceDisplay}</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 pt-2">
+                            <button onclick="openQuickView(${item.id})" class="flex-1 py-2 bg-offwhite text-charcoal text-xs uppercase font-semibold tracking-wider rounded border border-brand-border hover:bg-gold hover:text-white hover:border-gold transition-colors">
+                                Quick View
+                            </button>
+                            <button onclick="openVisitModal(${item.id})" class="px-4 py-2 bg-charcoal text-white text-xs uppercase font-semibold tracking-wider rounded hover:bg-gold transition-colors">
+                                Book Visit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+
+            return `
+            <div class="bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-xl hover:border-gold/50 transition-all duration-300 flex flex-col group">
+                <!-- Image Container -->
+                <div class="relative h-64 overflow-hidden">
+                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60"></div>
+                    
+                    <div class="absolute top-3 left-3 bg-gold text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">
+                        ${item.badge}
+                    </div>
+
+                    <button onclick="toggleSaveProperty(${item.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-xs transition-all hover:bg-white ${isSaved ? 'text-red-500' : 'text-charcoal hover:text-gold'}">
+                        <i class="${isSaved ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                    </button>
+
+                    <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
+                        <span class="text-xs font-medium tracking-wider uppercase opacity-90"><i class="fa-solid fa-location-dot mr-1 text-gold"></i>${item.location}</span>
+                        <span class="font-serif text-lg font-bold text-white drop-shadow">${item.priceDisplay}</span>
+                    </div>
+                </div>
+
+                <!-- Content Body -->
+                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <h3 class="font-serif text-lg font-semibold text-charcoal group-hover:text-gold transition-colors line-clamp-1">${item.title}</h3>
+                        <p class="text-xs text-charcoal-light mt-1.5 line-clamp-2 font-light leading-relaxed">${item.description}</p>
+                    </div>
+
+                    <!-- Specs Bar -->
+                    <div class="py-3 border-y border-brand-border flex items-center justify-between text-xs text-charcoal-muted">
+                        <div class="flex items-center gap-1"><i class="fa-solid fa-bed text-gold"></i> <span><strong>${item.bhk}</strong> Beds</span></div>
+                        <div class="flex items-center gap-1"><i class="fa-solid fa-bath text-gold"></i> <span><strong>${item.baths}</strong> Baths</span></div>
+                        <div class="flex items-center gap-1"><i class="fa-solid fa-ruler-combined text-gold"></i> <span><strong>${item.sqftDisplay}</strong></span></div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex gap-2">
+                        <button onclick="openQuickView(${item.id})" class="flex-1 py-2 bg-offwhite text-charcoal text-xs uppercase font-semibold tracking-wider rounded border border-brand-border hover:bg-gold hover:text-white hover:border-gold transition-colors">
+                            Details
+                        </button>
+                        <button onclick="openVisitModal(${item.id})" class="px-3 py-2 bg-charcoal text-white text-xs uppercase font-semibold tracking-wider rounded hover:bg-gold transition-colors" title="Schedule Tour">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        // LAYOUT TOGGLE (GRID vs LIST)
+        function setLayout(type) {
+            currentLayout = type;
+            if (type === 'grid') {
+                propertiesGrid.className = "grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300";
+                gridViewBtn.className = "p-1.5 text-xs rounded bg-white text-gold shadow-sm transition-all";
+                listViewBtn.className = "p-1.5 text-xs rounded text-charcoal-muted hover:text-charcoal transition-all";
+            } else {
+                propertiesGrid.className = "flex flex-col gap-6 transition-all duration-300";
+                listViewBtn.className = "p-1.5 text-xs rounded bg-white text-gold shadow-sm transition-all";
+                gridViewBtn.className = "p-1.5 text-xs rounded text-charcoal-muted hover:text-charcoal transition-all";
+            }
+            renderProperties();
+        }
+
+        // RESET FILTERS
+        function resetAllFilters() {
+            activeFilters = {
+                search: "",
+                type: "all",
+                location: "all",
+                archetype: "all",
+                maxPrice: 50000000,
+                bhk: "all",
+                sort: "featured"
+            };
+
+            searchInput.value = "";
+            locationSelect.value = "all";
+            typeSelect.value = "all";
+            sortSelect.value = "featured";
+            priceRange.value = 50000000;
+            priceDisplay.textContent = "$50,000,000";
+
+            document.querySelectorAll('.type-btn').forEach((b, idx) => {
+                if (idx === 0) {
+                    b.classList.add('bg-white', 'text-charcoal', 'shadow-sm');
+                } else {
+                    b.classList.remove('bg-white', 'text-charcoal', 'shadow-sm');
+                    b.classList.add('text-charcoal-muted');
+                }
+            });
+
+            document.querySelectorAll('.bhk-btn').forEach((b, idx) => {
+                if (idx === 0) {
+                    b.classList.add('bg-gold', 'text-white', 'border-gold');
+                } else {
+                    b.classList.remove('bg-gold', 'text-white', 'border-gold');
+                }
+            });
+
+            renderProperties();
+            showToast("Filters reset to default");
+        }
+
+        // SAVED PROPERTIES MANAGEMENT
+        function toggleSaveProperty(id) {
+            if (savedPropertyIds.has(id)) {
+                savedPropertyIds.delete(id);
+                showToast("Removed from saved list");
+            } else {
+                savedPropertyIds.add(id);
+                showToast("Property saved to favorites");
+            }
+            updateSavedBadge();
+            renderProperties();
+            renderSavedDrawerItems();
+        }
+
+        function updateSavedBadge() {
+            const count = savedPropertyIds.size;
+            if (count > 0) {
+                savedCountBadge.textContent = count;
+                savedCountBadge.classList.remove('hidden');
+                savedCountBadgeMobile.textContent = count;
+                savedCountBadgeMobile.classList.remove('hidden');
+            } else {
+                savedCountBadge.classList.add('hidden');
+                savedCountBadgeMobile.classList.add('hidden');
+            }
+        }
+
+        function openSavedDrawer() {
+            renderSavedDrawerItems();
+            const drawer = document.getElementById('savedDrawer');
+            const panel = document.getElementById('savedPanel');
+            drawer.classList.remove('hidden');
+            setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+        }
+
+        function closeSavedDrawer() {
+            const drawer = document.getElementById('savedDrawer');
+            const panel = document.getElementById('savedPanel');
+            panel.classList.add('translate-x-full');
+            setTimeout(() => drawer.classList.add('hidden'), 300);
+        }
+
+        function renderSavedDrawerItems() {
+            const container = document.getElementById('savedItemsContainer');
+            if (savedPropertyIds.size === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-charcoal-muted">
+                        <i class="fa-regular fa-heart text-3xl mb-3 text-gold"></i>
+                        <p class="text-sm font-medium">No saved properties yet.</p>
+                        <p class="text-xs mt-1">Bookmark properties to review or inquire altogether.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const items = PROPERTIES_DATA.filter(p => savedPropertyIds.has(p.id));
+            container.innerHTML = items.map(p => `
+                <div class="flex items-center gap-3 p-3 bg-offwhite border border-brand-border rounded-lg relative group">
+                    <img src="${p.image}" class="w-16 h-16 object-cover rounded">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-semibold text-charcoal truncate">${p.title}</h4>
+                        <p class="text-[11px] text-gold font-bold mt-0.5">${p.priceDisplay}</p>
+                        <p class="text-[10px] text-charcoal-muted">${p.location}</p>
+                    </div>
+                    <button onclick="toggleSaveProperty(${p.id})" class="text-charcoal-muted hover:text-red-500 text-sm p-1">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // QUICK-VIEW DRAWER
+        function openQuickView(id) {
+            const property = PROPERTIES_DATA.find(p => p.id === id);
+            if (!property) return;
+
+            document.getElementById('qvCategory').textContent = `${property.archetype} • ${property.location}`;
+            
+            const content = document.getElementById('qvContent');
+            const isSaved = savedPropertyIds.has(property.id);
+
+            content.innerHTML = `
+                <div class="relative h-72 rounded-xl overflow-hidden mb-4">
+                    <img src="${property.image}" class="w-full h-full object-cover">
+                    <span class="absolute top-3 left-3 bg-gold text-white text-xs font-bold px-3 py-1 rounded">${property.badge}</span>
+                </div>
+                <div>
+                    <h2 class="font-serif text-2xl font-semibold text-charcoal">${property.title}</h2>
+                    <p class="font-serif text-xl font-bold text-gold mt-1">${property.priceDisplay}</p>
+                </div>
+                <div class="grid grid-cols-3 gap-3 p-4 bg-offwhite rounded-lg border border-brand-border text-center">
+                    <div>
+                        <span class="text-[10px] uppercase text-charcoal-muted block">Bedrooms</span>
+                        <span class="text-sm font-bold text-charcoal">${property.bhk} BHK</span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] uppercase text-charcoal-muted block">Bathrooms</span>
+                        <span class="text-sm font-bold text-charcoal">${property.baths} Baths</span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] uppercase text-charcoal-muted block">Total Area</span>
+                        <span class="text-sm font-bold text-charcoal">${property.sqftDisplay}</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-charcoal tracking-wider mb-2">Overview</h4>
+                    <p class="text-xs text-charcoal-light leading-relaxed">${property.description}</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-charcoal tracking-wider mb-2">Key Amenities</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        ${property.specs.map(s => `
+                            <div class="flex items-center gap-2 text-xs text-charcoal-light">
+                                <i class="fa-solid fa-check text-gold text-xs"></i>
+                                <span>${s}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('qvBookBtn').onclick = () => {
+                closeQuickView();
+                openVisitModal(property.id);
+            };
+
+            const saveBtn = document.getElementById('qvSaveBtn');
+            saveBtn.innerHTML = `<i class="${isSaved ? 'fa-solid text-red-500' : 'fa-regular'} fa-heart"></i>`;
+            saveBtn.onclick = () => {
+                toggleSaveProperty(property.id);
+                closeQuickView();
+            };
+
+            const drawer = document.getElementById('quickViewDrawer');
+            const panel = document.getElementById('drawerPanel');
+            drawer.classList.remove('hidden');
+            setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+        }
+
+        function closeQuickView() {
+            const drawer = document.getElementById('quickViewDrawer');
+            const panel = document.getElementById('drawerPanel');
+            panel.classList.add('translate-x-full');
+            setTimeout(() => drawer.classList.add('hidden'), 300);
+        }
+
+        // VISIT MODAL
+        function populateModalSelect() {
+            const select = document.getElementById('modalPropertySelect');
+            select.innerHTML = PROPERTIES_DATA.map(p => `
+                <option value="${p.id}">${p.title} (${p.location})</option>
+            `).join('');
+        }
+
+        function openVisitModal(propertyId = null) {
+            if (propertyId) {
+                document.getElementById('modalPropertySelect').value = propertyId;
+            }
+            document.getElementById('visitModal').classList.remove('hidden');
+        }
+
+        function closeVisitModal() {
+            document.getElementById('visitModal').classList.add('hidden');
+        }
+
+        function handleVisitSubmit(e) {
+            e.preventDefault();
+            closeVisitModal();
+            showToast("Private visit request submitted! Our concierge will contact you shortly.");
+            e.target.reset();
+        }
+
+        // TOAST NOTIFICATIONS
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = "bg-charcoal text-white text-xs px-4 py-3 rounded-lg shadow-xl border-l-4 border-gold flex items-center gap-3 pointer-events-auto transition-all transform translate-y-2 opacity-0";
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check text-gold text-sm"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
