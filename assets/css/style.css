@@ -1,0 +1,133 @@
+body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+/* Homepage CSS */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 223, 216, 0.5);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(26,26,26,0.5) 0%, rgba(26,26,26,0.3) 50%, rgba(26,26,26,0.7) 100%);
+        }
+
+        /* Swiper Customization */
+        .swiper-pagination-bullet-active {
+            background-color: #C5A059 !important;
+            width: 24px !important;
+            border-radius: 4px !important;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #1A1A1A !important;
+            background: #FFFFFF;
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #E2DFD8;
+        }
+
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 16px !important;
+            font-weight: bold;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F8F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9E7C3B;
+        }
+
+        /* Toast notification */
+        #toast {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-hover-effect {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+
+    /* Homepage CSS End */
+
+    /* Properties CSS */
+
+    .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 224, 216, 0.7);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F3F0EC;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 3px;
+        }
+        .slider-thumb::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #C5A059;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Properties End */
+
+        /* Services Css */
+
+        .service-card {
+            transition:
+                transform .5s ease,
+                box-shadow .5s ease,
+                border-color .5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,.08);
+            border-color: #caa45d;
+        }
+
+        .service-card:hover .service-icon {
+            background: #caa45d;
+            color: white;
+            transform: rotate(5deg);
+        }
+
+        .service-icon {
+            transition: all .4s ease;
+        }
+
+        /* Services css end */

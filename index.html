@@ -43,80 +43,7 @@
         }
     </script>
     
-    <!-- Custom Styles -->
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #FFFFFF;
-            color: #1A1A1A;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, .font-serif {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 223, 216, 0.5);
-        }
-
-        .hero-overlay {
-            background: linear-gradient(180deg, rgba(26,26,26,0.5) 0%, rgba(26,26,26,0.3) 50%, rgba(26,26,26,0.7) 100%);
-        }
-
-        /* Swiper Customization */
-        .swiper-pagination-bullet-active {
-            background-color: #C5A059 !important;
-            width: 24px !important;
-            border-radius: 4px !important;
-        }
-        
-        .swiper-button-next, .swiper-button-prev {
-            color: #1A1A1A !important;
-            background: #FFFFFF;
-            width: 44px !important;
-            height: 44px !important;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border: 1px solid #E2DFD8;
-        }
-
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 16px !important;
-            font-weight: bold;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F9F8F6;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C5A059;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #9E7C3B;
-        }
-
-        /* Toast notification */
-        #toast {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .card-hover-effect {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .card-hover-effect:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 </head>
 <body class="antialiased selection:bg-brand-gold Light selection:text-white">
 
@@ -174,176 +101,186 @@
    <!-- =========================================================
      HEADER
 ========================================================= -->
-
 <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
 
-    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 flex items-center justify-between">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-3">
-
-            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
-                <span class="text-[#caa45d] text-[16px]">♛</span>
+        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center shrink-0">
+                <span class="text-[#caa45d] text-sm sm:text-base leading-none">♛</span>
             </div>
 
-            <div>
-                <div class="serif text-[22px] tracking-[2px] leading-none">
+            <div class="flex flex-col justify-center">
+                <div class="serif text-lg sm:text-xl lg:text-[22px] tracking-[2px] leading-none text-[#171717]">
                     ELYSIAN
                 </div>
-
-                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
+                <div class="text-[7px] sm:text-[8px] tracking-[1.5px] sm:tracking-[2px] text-[#caa45d] mt-1 font-medium">
                     ESTATE CONSULTANTS
                 </div>
             </div>
-
         </a>
 
-
         <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[12px] tracking-[1px] font-medium">
+            <a href="/" class="text-[#caa45d] transition-colors">HOME</a>
+            <a href="./properties.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">PROPERTIES</a>
+            <a href="./about.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">ABOUT</a>
+            <a href="./services.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">SERVICES</a>
+            <a href="./contact.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">CONTACT</a>
 
-        <nav class="hidden lg:flex items-center gap-7 py-4 text-[12px] tracking-[1px] font-medium">
+            <!-- Search Button -->
+            <button aria-label="Search" class="p-1 text-[#171717] hover:text-[#caa45d] transition-colors">
+                <i data-lucide="search" class="w-4 h-4"></i>
+            </button>
 
-            <a href="/" class="text-[#caa45d]">HOME</a>
-            <a href="./properties.html" class="hover:text-[#caa45d] transition">PROPERTIES</a>
-            <a href="./about.html" class="hover:text-[#caa45d] transition">ABOUT</a>
-            <a href="./services.html" class="hover:text-[#caa45d] transition">SERVICES</a>
-            <a href="./contact.html" class="hover:text-[#caa45d] transition">CONTACT</a>
-
-            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
-
+            <!-- CTA Button -->
             <a href="#contact"
-               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
-                SCHEDULE A VISIT
+               class="bg-[#caa45d] text-white px-5 py-2.5 sm:py-3 rounded-full text-[11px] font-semibold tracking-[0.5px] hover:bg-[#b58e48] transition-all shadow-sm shrink-0">
+               SCHEDULE A VISIT
             </a>
-
         </nav>
 
+        <!-- Mobile / Tablet Action & Menu Button -->
+        <div class="flex items-center gap-3 lg:hidden">
+            <button aria-label="Search" class="p-2 text-[#171717] hover:text-[#caa45d] transition-colors">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
 
-        <!-- Mobile Menu -->
-
-        <button id="menuBtn" class="lg:hidden">
-            <i data-lucide="menu"></i>
-        </button>
+            <button id="menuBtn" 
+        aria-label="Toggle Navigation Menu" 
+        aria-expanded="false" 
+        class="p-2 text-[#171717] hover:text-[#caa45d] focus:outline-none transition-colors flex items-center justify-center">
+    <!-- Using inline SVG instead of Lucide to prevent missing icon bugs -->
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+</button>
+        </div>
 
     </div>
 
-
-    <!-- Mobile Navigation -->
-
+    <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu"
-         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
+         class="hidden lg:hidden bg-white/98 backdrop-blur-md border-t border-[#e8e4dc] px-6 py-6 shadow-lg transition-all duration-300">
 
-        <div class="flex flex-col gap-5 text-sm tracking-wide">
-
-            <a href="./index.html" class="text-[#caa45d]">HOME</a>
-            <a href="./properties.html">PROPERTIES</a>
-            <a href="./about.html">ABOUT</a>
-            <a href="./services.html">SERVICES</a>
-            <a href="./contact.html">CONTACT</a>
+        <div class="flex flex-col gap-4 text-sm font-medium tracking-wider">
+            <a href="/" class="text-[#caa45d] py-1 border-b border-gray-50">HOME</a>
+            <a href="./properties.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">PROPERTIES</a>
+            <a href="./about.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">ABOUT</a>
+            <a href="./services.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">SERVICES</a>
+            <a href="./contact.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">CONTACT</a>
 
             <a href="#contact"
-               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
+               class="bg-[#caa45d] text-white text-center py-3 mt-2 rounded-full font-semibold text-xs tracking-wider hover:bg-[#b58e48] transition-all shadow-sm">
                 SCHEDULE A VISIT
             </a>
-
         </div>
 
     </div>
 
 </header>
 
-    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-32 overflow-hidden">
-        <!-- Hero Background Image/Video representation -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.pexels.com/photos/18559564/pexels-photo-18559564.jpeg?_gl=1*mvuge9*_ga*MjA4Njk3MTU0MS4xNzkwNjc2MjQ2*_ga_8JE65Q40S6*czE3OTI2NzMwNDkkbzQkZzEkdDE3OTI2NzMxMDYkajEzJGwwJGgw" alt="Luxury Real Estate Architectural Villa" class="w-full h-full object-cover transform scale-105 hero-bg-img">
-            <div class="absolute inset-0 hero-overlay"></div>
+   <section id="hero" class="relative min-h-[100vh] lg:min-h-[1050px] flex flex-col justify-between pt-24 pb-12 lg:pb-32 overflow-hidden">
+    <!-- Hero Background Image & Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.pexels.com/photos/18559564/pexels-photo-18559564.jpeg?_gl=1*mvuge9*_ga*MjA4Njk3MTU0MS4xNzkwNjc2MjQ2*_ga_8JE65Q40S6*czE3OTI2NzMwNDkkbzQkZzEkdDE3OTI2NzMwNDkkbjE3OTI2NzMxMDYkajEzJGwwJGgw" 
+             alt="Luxury Real Estate Architectural Villa" 
+             class="w-full h-full object-cover transform scale-105 hero-bg-img">
+        <div class="absolute inset-0 hero-overlay bg-black/40"></div>
+    </div>
+
+    <!-- Main Hero Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white my-auto pt-4 pb-8 lg:pt-8 lg:pb-16">
+        <span class="hero-sub font-semibold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-brand-goldLight mb-4 inline-block bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+            Pinnacle of High-End Living
+        </span>
+
+        <h1 class="hero-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight max-w-5xl mx-auto leading-[1.15] mb-6">
+            Find a Place You’ll Love to Call Home
+        </h1>
+
+        <p class="hero-desc text-sm sm:text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-8 lg:mb-10 font-light leading-relaxed px-2">
+            Elysian Estate Consultants curates India's most exquisite luxury residences, penthouses, and architectural landmarks for discerning buyers and visionary investors.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md sm:max-w-none mx-auto">
+            <a href="#featured" class="w-full sm:w-auto px-8 py-4 bg-brand-gold hover:bg-brand-goldDark text-white font-semibold text-xs uppercase tracking-widest rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl text-center">
+                Explore Properties
+            </a>
+            <button onclick="openModal()" type="button" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold text-xs uppercase tracking-widest rounded-full transition-all duration-300 text-center">
+                Schedule a Visit
+            </button>
         </div>
+    </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white mt-8">
-            <span class="hero-sub font-semibold uppercase tracking-[0.3em] text-xs sm:text-sm text-brand-goldLight mb-4 inline-block bg-black/30 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
-                Pinnacle of High-End Living
-            </span>
-            <h1 class="hero-title text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight max-w-5xl mx-auto leading-[1.1] mb-6">
-                Find a Place You’ll Love to Call Home
-            </h1>
-            <p class="hero-desc text-base sm:text-lg text-gray-200 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                Elysian Estate Consultants curates India's most exquisite luxury residences, penthouses, and architectural landmarks for discerning buyers and visionary investors.
-            </p>
-
-            <div class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                <a href="#featured" class="w-full sm:w-auto px-8 py-4 bg-brand-gold hover:bg-brand-goldDark text-white font-semibold text-xs uppercase tracking-widest rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl">
-                    Explore Properties
-                </a>
-                <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold text-xs uppercase tracking-widest rounded-full transition-all duration-300">
-                    Schedule a Visit
-                </button>
+    <!-- Quick Search Panel -->
+    <div class="relative lg:absolute lg:bottom-10 lg:left-1/2 lg:-translate-x-1/2 z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 lg:mt-0">
+        <div class="bg-white rounded-2xl shadow-2xl p-5 sm:p-6 lg:p-7 border border-brand-border/60 backdrop-blur-md">
+            
+            <!-- Buy / Rent Toggle Tabs -->
+            <div class="flex items-center space-x-2 mb-5 border-b border-gray-100 pb-3">
+                <button id="hero-toggle-buy" type="button" onclick="setHeroSearchType('Buy')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-brand-charcoal text-white transition-all">Buy</button>
+                <button id="hero-toggle-rent" type="button" onclick="setHeroSearchType('Rent')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand-charcoal transition-all">Rent</button>
             </div>
-        </div>
 
-        <!-- Floating Quick Search Panel -->
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[92%] max-w-6xl z-20">
-            <div class="bg-white rounded-2xl shadow-2xl p-5 sm:p-7 border border-brand-border/60 backdrop-blur-md">
-                <!-- Buy / Rent Toggle Tabs -->
-                <div class="flex items-center space-x-2 mb-5 border-b border-gray-100 pb-3">
-                    <button id="hero-toggle-buy" onclick="setHeroSearchType('Buy')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-brand-charcoal text-white transition-all">Buy</button>
-                    <button id="hero-toggle-rent" onclick="setHeroSearchType('Rent')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-brand-charcoal transition-all">Rent</button>
+            <!-- Form -->
+            <form onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 items-end">
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Location</label>
+                    <select id="hero-location" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30 text-gray-800">
+                        <option value="All">All Locations</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Gurgaon">Gurgaon</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Delhi">Delhi NCR</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Bangalore">Bangalore</option>
+                    </select>
                 </div>
 
-                <form onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Location</label>
-                        <select id="hero-location" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
-                            <option value="All">All Locations</option>
-                            <option value="Jaipur">Jaipur</option>
-                            <option value="Gurgaon">Gurgaon</option>
-                            <option value="Mumbai">Mumbai</option>
-                            <option value="Delhi">Delhi NCR</option>
-                            <option value="Goa">Goa</option>
-                            <option value="Bangalore">Bangalore</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Property Type</label>
+                    <select id="hero-type" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30 text-gray-800">
+                        <option value="All">All Types</option>
+                        <option value="Villa">Luxury Villa</option>
+                        <option value="Penthouse">Sky Penthouse</option>
+                        <option value="Apartment">Luxury Apartment</option>
+                        <option value="Mansion">Mansion</option>
+                    </select>
+                </div>
 
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Property Type</label>
-                        <select id="hero-type" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
-                            <option value="All">All Types</option>
-                            <option value="Villa">Luxury Villa</option>
-                            <option value="Penthouse">Sky Penthouse</option>
-                            <option value="Apartment">Luxury Apartment</option>
-                            <option value="Mansion">Mansion</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Max Budget</label>
+                    <select id="hero-budget" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30 text-gray-800">
+                        <option value="Any">Any Budget</option>
+                        <option value="10">Under ₹10 Cr</option>
+                        <option value="25">Under ₹25 Cr</option>
+                        <option value="50">Under ₹50 Cr</option>
+                    </select>
+                </div>
 
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Max Budget</label>
-                        <select id="hero-budget" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
-                            <option value="Any">Any Budget</option>
-                            <option value="10">Under ₹10 Cr</option>
-                            <option value="25">Under ₹25 Cr</option>
-                            <option value="50">Under ₹50 Cr</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Bedrooms</label>
+                    <select id="hero-beds" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30 text-gray-800">
+                        <option value="Any">Any BHK</option>
+                        <option value="3">3+ BHK</option>
+                        <option value="4">4+ BHK</option>
+                        <option value="5">5+ BHK</option>
+                    </select>
+                </div>
 
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Bedrooms</label>
-                        <select id="hero-beds" class="w-full px-3.5 py-3 rounded-xl border border-brand-border text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-gold bg-brand-warmGray/30">
-                            <option value="Any">Any BHK</option>
-                            <option value="3">3+ BHK</option>
-                            <option value="4">4+ BHK</option>
-                            <option value="5">5+ BHK</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldDark text-white py-3.5 rounded-xl font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span>Search</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div class="sm:col-span-2 md:col-span-1 lg:col-span-1">
+                    <button type="submit" class="w-full bg-brand-gold hover:bg-brand-goldDark text-white py-3.5 rounded-xl font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="py-20 bg-brand-warmGray border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1635,5 +1572,50 @@
             });
         });
     </script>
+
+    <script>
+
+    /* AOS */
+
+    AOS.init({
+        once: true,
+        duration: 800,
+        easing: 'ease-out-cubic'
+    });
+
+
+    /* Lucide */
+
+    lucide.createIcons();
+
+
+    /* Mobile Menu */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+
+    menuBtn.addEventListener("click", () => {
+
+        mobileMenu.classList.toggle("hidden");
+
+    });
+
+    /* Contact Form Submission Handler */
+    function handleContactSubmit(e) {
+        e.preventDefault();
+        alert('Thank you. Your inquiry has been submitted successfully. Our senior advisor will contact you shortly.');
+    }
+
+</script>
+
+    <!-- JavaScript to handle mobile navigation toggle -->
+<script type="text/javascript" src="./assets/js/main.js">
+    
+</script>
+
 </body>
 </html>

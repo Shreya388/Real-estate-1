@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Services | Elysian Estate Consultants</title>
+    <title>Contact Us | Elysian Estate Consultants</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,27 +42,17 @@
             color: white;
         }
 
-        .service-card {
+        .contact-card {
             transition:
                 transform .5s ease,
                 box-shadow .5s ease,
                 border-color .5s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0,0,0,.08);
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.06);
             border-color: #caa45d;
-        }
-
-        .service-card:hover .service-icon {
-            background: #caa45d;
-            color: white;
-            transform: rotate(5deg);
-        }
-
-        .service-icon {
-            transition: all .4s ease;
         }
 
     </style>
@@ -71,88 +61,88 @@
 
 <body class="bg-[#f8f7f4] text-[#171717]">
 
-
  <!-- =========================================================
      HEADER
 ========================================================= -->
-
 <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
 
-    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 flex items-center justify-between">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-3">
-
-            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
-                <span class="text-[#caa45d] text-[16px]">♛</span>
+        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center shrink-0">
+                <span class="text-[#caa45d] text-sm sm:text-base leading-none">♛</span>
             </div>
 
-            <div>
-                <div class="serif text-[22px] tracking-[2px] leading-none">
+            <div class="flex flex-col justify-center">
+                <div class="serif text-lg sm:text-xl lg:text-[22px] tracking-[2px] leading-none text-[#171717]">
                     ELYSIAN
                 </div>
-
-                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
+                <div class="text-[7px] sm:text-[8px] tracking-[1.5px] sm:tracking-[2px] text-[#caa45d] mt-1 font-medium">
                     ESTATE CONSULTANTS
                 </div>
             </div>
-
         </a>
 
-
         <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[12px] tracking-[1px] font-medium">
+            <a href="/" class="text-[#caa45d] transition-colors">HOME</a>
+            <a href="./properties.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">PROPERTIES</a>
+            <a href="./about.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">ABOUT</a>
+            <a href="./services.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">SERVICES</a>
+            <a href="./contact.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">CONTACT</a>
 
-        <nav class="hidden lg:flex items-center gap-7 py-4 text-[12px] tracking-[1px] font-medium">
+            <!-- Search Button -->
+            <button aria-label="Search" class="p-1 text-[#171717] hover:text-[#caa45d] transition-colors">
+                <i data-lucide="search" class="w-4 h-4"></i>
+            </button>
 
-            <a href="./index.html" class="hover:text-[#caa45d] transition">HOME</a>
-            <a href="./properties.html" class="hover:text-[#caa45d] transition">PROPERTIES</a>
-            <a href="./about.html" class="hover:text-[#caa45d] transition">ABOUT</a>
-            <a href="./services.html" class="hover:text-[#caa45d] transition">SERVICES</a>
-            <a href="./contact.html" class="text-[#caa45d]">CONTACT</a>
-
-            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
-
+            <!-- CTA Button -->
             <a href="#contact"
-               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
-                SCHEDULE A VISIT
+               class="bg-[#caa45d] text-white px-5 py-2.5 sm:py-3 rounded-full text-[11px] font-semibold tracking-[0.5px] hover:bg-[#b58e48] transition-all shadow-sm shrink-0">
+               SCHEDULE A VISIT
             </a>
-
         </nav>
 
+        <!-- Mobile / Tablet Action & Menu Button -->
+        <div class="flex items-center gap-3 lg:hidden">
+            <button aria-label="Search" class="p-2 text-[#171717] hover:text-[#caa45d] transition-colors">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
 
-        <!-- Mobile Menu -->
-
-        <button id="menuBtn" class="lg:hidden">
-            <i data-lucide="menu"></i>
-        </button>
+            <button id="menuBtn" 
+        aria-label="Toggle Navigation Menu" 
+        aria-expanded="false" 
+        class="p-2 text-[#171717] hover:text-[#caa45d] focus:outline-none transition-colors flex items-center justify-center">
+    <!-- Using inline SVG instead of Lucide to prevent missing icon bugs -->
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+</button>
+        </div>
 
     </div>
 
-
-    <!-- Mobile Navigation -->
-
+    <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu"
-         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
+         class="hidden lg:hidden bg-white/98 backdrop-blur-md border-t border-[#e8e4dc] px-6 py-6 shadow-lg transition-all duration-300">
 
-        <div class="flex flex-col gap-5 text-sm tracking-wide">
-
-            <a href="./index.html">HOME</a>
-            <a href="./properties.html" class="text-[#caa45d]">PROPERTIES</a>
-            <a href="./about.html">ABOUT</a>
-            <a href="./services.html">SERVICES</a>
-            <a href="./contact.html">CONTACT</a>
+        <div class="flex flex-col gap-4 text-sm font-medium tracking-wider">
+            <a href="/" class="text-[#caa45d] py-1 border-b border-gray-50">HOME</a>
+            <a href="./properties.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">PROPERTIES</a>
+            <a href="./about.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">ABOUT</a>
+            <a href="./services.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">SERVICES</a>
+            <a href="./contact.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">CONTACT</a>
 
             <a href="#contact"
-               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
+               class="bg-[#caa45d] text-white text-center py-3 mt-2 rounded-full font-semibold text-xs tracking-wider hover:bg-[#b58e48] transition-all shadow-sm">
                 SCHEDULE A VISIT
             </a>
-
         </div>
 
     </div>
 
 </header>
-
 
 <!-- =========================================================
      HERO
@@ -170,12 +160,12 @@
     <div class="absolute inset-0">
 
         <img
-            src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=2000&q=85"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85"
             class="w-full h-full object-cover"
-            alt="Luxury Interior">
+            alt="Luxury Contact Hero">
 
         <div class="absolute inset-0
-                    bg-black/60">
+                    bg-black/65">
         </div>
 
     </div>
@@ -198,7 +188,7 @@
                    font-medium
                    mb-6">
 
-            Our Expertise
+            Connect With Us
 
         </div>
 
@@ -211,11 +201,11 @@
                    leading-[.9]
                    font-medium">
 
-            Beyond
+            Start Your
             <br>
 
             <span class="italic">
-                Property.
+                Acquisition.
             </span>
 
         </h1>
@@ -231,9 +221,8 @@
                    leading-7
                    text-sm md:text-base">
 
-            From discovering the right address to completing
-            a complex acquisition, Elysian provides thoughtful,
-            end-to-end real estate advisory.
+            Whether you are ready to secure an extraordinary residence or require 
+            private consultation, our senior advisors are at your service.
 
         </p>
 
@@ -243,20 +232,20 @@
             data-aos-delay="450"
             class="mt-10">
 
-            <a href="#services"
+            <a href="#contact-form"
                class="inline-flex
                       items-center
                       gap-3
-                      border border-white/40
-                      px-7 py-4
+                      bg-[#caa45d]
+                      text-white
+                      px-8 py-4
                       rounded-full
                       text-xs
                       tracking-[1.5px]
-                      hover:bg-white
-                      hover:text-black
+                      hover:bg-[#b58e48]
                       transition">
 
-                EXPLORE OUR SERVICES
+                SEND AN INQUIRY
 
                 <i data-lucide="arrow-down"
                    class="w-4 h-4">
@@ -273,117 +262,143 @@
 
 
 <!-- =========================================================
-     INTRO
+     CONTACT INFORMATION CARDS
 ========================================================= -->
 
-<section class="py-28 bg-white">
+<section class="py-24 bg-white">
+
+    <div class="max-w-[1050px]
+                mx-auto px-6">
+
+        <div class="text-center
+                    max-w-[700px]
+                    mx-auto
+                    mb-16">
+
+            <div class="text-[#caa45d]
+                        text-[11px]
+                        tracking-[4px]
+                        mb-5">
+
+                DIRECT CHANNELS
+
+            </div>
+
+
+            <h2 class="serif
+                       text-5xl md:text-6xl
+                       leading-[1]">
+
+                We Are Here
+                <br>
+
+                <span class="italic">
+                    To Guide You.
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="grid
+                    md:grid-cols-3
+                    gap-8">
+
+            <!-- CARD 1 -->
+            <div data-aos="fade-up" class="contact-card bg-[#f8f7f4] border border-[#e5e0d7] p-8 text-center">
+                <div class="w-14 h-14 mx-auto rounded-full border border-[#caa45d] flex items-center justify-center text-[#caa45d] mb-6">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <h3 class="serif text-2xl mb-3">Headquarters</h3>
+                <p class="text-xs text-gray-500 leading-6">
+                    DLF Cyber City, Phase 3<br>
+                    Sector 24, Gurugram<br>
+                    Haryana 122002
+                </p>
+            </div>
+
+            <!-- CARD 2 -->
+            <div data-aos="fade-up" data-aos-delay="100" class="contact-card bg-[#f8f7f4] border border-[#e5e0d7] p-8 text-center">
+                <div class="w-14 h-14 mx-auto rounded-full border border-[#caa45d] flex items-center justify-center text-[#caa45d] mb-6">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                </div>
+                <h3 class="serif text-2xl mb-3">Direct Line</h3>
+                <p class="text-xs text-gray-500 leading-6">
+                    +91 (124) 498-7600<br>
+                    +91 98765 43210<br>
+                    Mon - Sat (9:30 - 19:00)
+                </p>
+            </div>
+
+            <!-- CARD 3 -->
+            <div data-aos="fade-up" data-aos-delay="200" class="contact-card bg-[#f8f7f4] border border-[#e5e0d7] p-8 text-center">
+                <div class="w-14 h-14 mx-auto rounded-full border border-[#caa45d] flex items-center justify-center text-[#caa45d] mb-6">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <h3 class="serif text-2xl mb-3">Electronic Mail</h3>
+                <p class="text-xs text-gray-500 leading-6">
+                    advisory@elysianestates.in<br>
+                    concierge@elysianestates.in<br>
+                    24/7 Priority Support
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT FORM SECTION
+========================================================= -->
+
+<section id="contact-form"
+         class="py-28
+                bg-[#f8f7f4]">
 
     <div class="max-w-[1050px]
                 mx-auto px-6">
 
         <div class="grid
-                    lg:grid-cols-2
-                    gap-20
+                    lg:grid-cols-12
+                    gap-16
                     items-center">
 
-
-            <!-- IMAGE -->
-
-            <div data-aos="fade-right"
-                 class="relative">
-
-                <img
-                    src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
-                    class="w-full
-                           h-[520px]
-                           object-cover"
-                    alt="Luxury Property">
-
-
-                <div class="absolute
-                            bottom-[-25px]
-                            left-[-25px]
-                            bg-[#171717]
-                            text-white
-                            px-8 py-7">
-
-                    <div class="serif
-                                text-4xl
-                                text-[#caa45d]">
-
-                        360°
-
-                    </div>
-
-                    <div class="text-[9px]
-                                tracking-[2px]
-                                uppercase
-                                text-gray-400
-                                mt-2">
-
-                        Advisory Perspective
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- CONTENT -->
-
-            <div data-aos="fade-left">
-
+            <!-- LEFT TEXT -->
+            <div class="lg:col-span-5" data-aos="fade-right">
                 <div class="text-[#caa45d]
                             text-[11px]
                             tracking-[4px]
                             font-medium
                             mb-5">
 
-                    HOW WE HELP
+                    PRIVATE CONSULTATION
 
                 </div>
-
 
                 <h2 class="serif
                            text-5xl md:text-6xl
                            leading-[1] mb-7">
 
-                    Every Property
+                    Schedule Your
                     <br>
 
                     <span class="italic">
-                        Has a Story.
+                        Private Visit.
                     </span>
 
                 </h2>
-
 
                 <p class="text-gray-500
                           leading-7
                           text-sm
                           mb-6">
-
-                    Our role goes beyond showing properties.
-                    We understand your priorities, evaluate
-                    opportunities and guide every important
-                    decision along the way.
-
+                    Fill out the inquiry form with your criteria, and a dedicated senior consultant will organize a confidential meeting or private property tour tailored entirely to your schedule.
                 </p>
-
-
-                <p class="text-gray-500
-                          leading-7
-                          text-sm
-                          mb-8">
-
-                    Whether you are purchasing your first luxury
-                    residence, selling a landmark property or
-                    building a long-term real estate portfolio,
-                    our advisory team works around your objectives.
-
-                </p>
-
 
                 <div class="flex
                             items-center
@@ -398,12 +413,60 @@
                                  text-[10px]
                                  tracking-[2px]
                                  text-gray-500">
-
-                        Personalised. Discreet. Strategic.
-
+                        Strictly Confidential
                     </span>
 
                 </div>
+            </div>
+
+            <!-- RIGHT FORM CONTAINER -->
+            <div class="lg:col-span-7 bg-white border border-[#e5e0d7] p-8 md:p-12 shadow-sm" data-aos="fade-left">
+                
+                <form onsubmit="handleContactSubmit(event)" class="space-y-6">
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-bold tracking-[1.5px] uppercase text-gray-600 mb-2">Full Name *</label>
+                            <input type="text" required placeholder="e.g. Vikramaditya Singhania" 
+                                   class="w-full px-4 py-3.5 bg-[#f8f7f4] border border-[#e5e0d7] rounded-xl text-sm focus:outline-none focus:border-[#caa45d]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold tracking-[1.5px] uppercase text-gray-600 mb-2">Phone Number *</label>
+                            <input type="tel" required placeholder="+91 98765 43210" 
+                                   class="w-full px-4 py-3.5 bg-[#f8f7f4] border border-[#e5e0d7] rounded-xl text-sm focus:outline-none focus:border-[#caa45d]">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-bold tracking-[1.5px] uppercase text-gray-600 mb-2">Email Address *</label>
+                            <input type="email" required placeholder="vikram@example.com" 
+                                   class="w-full px-4 py-3.5 bg-[#f8f7f4] border border-[#e5e0d7] rounded-xl text-sm focus:outline-none focus:border-[#caa45d]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold tracking-[1.5px] uppercase text-gray-600 mb-2">Area of Interest</label>
+                            <select class="w-full px-4 py-3.5 bg-[#f8f7f4] border border-[#e5e0d7] rounded-xl text-sm focus:outline-none focus:border-[#caa45d]">
+                                <option>Property Acquisition</option>
+                                <option>Property Sales / Listing</option>
+                                <option>Investment Advisory</option>
+                                <option>Luxury Rentals</option>
+                                <option>Private Client Services</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold tracking-[1.5px] uppercase text-gray-600 mb-2">Your Specifications & Requirements</label>
+                        <textarea rows="4" placeholder="Specify location preferences, configuration or budget details..." 
+                                  class="w-full px-4 py-3.5 bg-[#f8f7f4] border border-[#e5e0d7] rounded-xl text-sm focus:outline-none focus:border-[#caa45d]"></textarea>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full bg-[#171717] hover:bg-[#caa45d] text-white py-4 rounded-xl font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md">
+                        Submit Inquiry
+                    </button>
+
+                </form>
 
             </div>
 
@@ -416,541 +479,7 @@
 
 
 <!-- =========================================================
-     SERVICES
-========================================================= -->
-
-<section id="services"
-         class="py-28
-                bg-[#f8f7f4]">
-
-    <div class="max-w-[1050px]
-                mx-auto px-6">
-
-
-        <!-- TITLE -->
-
-        <div class="text-center
-                    max-w-[700px]
-                    mx-auto
-                    mb-16">
-
-            <div class="text-[#caa45d]
-                        text-[11px]
-                        tracking-[4px]
-                        mb-5">
-
-                WHAT WE DO
-
-            </div>
-
-
-            <h2 class="serif
-                       text-5xl md:text-6xl
-                       leading-[1]">
-
-                Advisory Built Around
-                <br>
-
-                <span class="italic">
-                    Your Ambition.
-                </span>
-
-            </h2>
-
-
-            <p class="text-gray-500
-                      text-sm
-                      leading-7
-                      mt-6">
-
-                A complete suite of luxury real estate services,
-                designed for buyers, sellers, investors and
-                developers.
-
-            </p>
-
-        </div>
-
-
-
-        <!-- SERVICE GRID -->
-
-        <div class="grid
-                    md:grid-cols-2
-                    lg:grid-cols-3
-                    gap-5">
-
-
-            <!-- SERVICE 01 -->
-
-            <div data-aos="fade-up"
-                 class="service-card
-                        bg-white
-                        border border-[#e5e0d7]
-                        p-9">
-
-                <div class="service-icon
-                            w-14 h-14
-                            rounded-full
-                            border border-[#caa45d]
-                            flex items-center
-                            justify-center
-                            text-[#caa45d]
-                            mb-8">
-
-                    <i data-lucide="home"
-                       class="w-5 h-5">
-                    </i>
-
-                </div>
-
-
-                <div class="text-[10px]
-                            tracking-[2px]
-                            text-[#caa45d]
-                            mb-3">
-
-                    01
-
-                </div>
-
-
-                <h3 class="serif
-                           text-3xl
-                           mb-4">
-
-                    Property Acquisition
-
-                </h3>
-
-
-                <p class="text-sm
-                          text-gray-500
-                          leading-7">
-
-                    Discover and acquire exceptional
-                    residences selected around your
-                    lifestyle, preferences and investment
-                    objectives.
-
-                </p>
-
-
-                <a href="#"
-                   class="inline-flex
-                          items-center
-                          gap-2
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-7
-                          text-[#171717]
-                          hover:text-[#caa45d]
-                          transition">
-
-                    LEARN MORE
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-3 h-3">
-                    </i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- SERVICE 02 -->
-
-            <div data-aos="fade-up"
-                 data-aos-delay="100"
-                 class="service-card
-                        bg-white
-                        border border-[#e5e0d7]
-                        p-9">
-
-                <div class="service-icon
-                            w-14 h-14
-                            rounded-full
-                            border border-[#caa45d]
-                            flex items-center
-                            justify-center
-                            text-[#caa45d]
-                            mb-8">
-
-                    <i data-lucide="tag"
-                       class="w-5 h-5">
-                    </i>
-
-                </div>
-
-
-                <div class="text-[10px]
-                            tracking-[2px]
-                            text-[#caa45d]
-                            mb-3">
-
-                    02
-
-                </div>
-
-
-                <h3 class="serif
-                           text-3xl
-                           mb-4">
-
-                    Property Sales
-
-                </h3>
-
-
-                <p class="text-sm
-                          text-gray-500
-                          leading-7">
-
-                    Position your property strategically,
-                    reach qualified buyers and manage the
-                    complete sales journey with discretion.
-
-                </p>
-
-
-                <a href="#"
-                   class="inline-flex
-                          items-center
-                          gap-2
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-7
-                          hover:text-[#caa45d]
-                          transition">
-
-                    LEARN MORE
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-3 h-3">
-                    </i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- SERVICE 03 -->
-
-            <div data-aos="fade-up"
-                 data-aos-delay="200"
-                 class="service-card
-                        bg-white
-                        border border-[#e5e0d7]
-                        p-9">
-
-                <div class="service-icon
-                            w-14 h-14
-                            rounded-full
-                            border border-[#caa45d]
-                            flex items-center
-                            justify-center
-                            text-[#caa45d]
-                            mb-8">
-
-                    <i data-lucide="trending-up"
-                       class="w-5 h-5">
-                    </i>
-
-                </div>
-
-
-                <div class="text-[10px]
-                            tracking-[2px]
-                            text-[#caa45d]
-                            mb-3">
-
-                    03
-
-                </div>
-
-
-                <h3 class="serif
-                           text-3xl
-                           mb-4">
-
-                    Investment Advisory
-
-                </h3>
-
-
-                <p class="text-sm
-                          text-gray-500
-                          leading-7">
-
-                    Identify opportunities with strong
-                    fundamentals through market intelligence,
-                    asset evaluation and strategic insight.
-
-                </p>
-
-
-                <a href="#"
-                   class="inline-flex
-                          items-center
-                          gap-2
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-7
-                          hover:text-[#caa45d]
-                          transition">
-
-                    LEARN MORE
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-3 h-3">
-                    </i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- SERVICE 04 -->
-
-            <div data-aos="fade-up"
-                 class="service-card
-                        bg-white
-                        border border-[#e5e0d7]
-                        p-9">
-
-                <div class="service-icon
-                            w-14 h-14
-                            rounded-full
-                            border border-[#caa45d]
-                            flex items-center
-                            justify-center
-                            text-[#caa45d]
-                            mb-8">
-
-                    <i data-lucide="key-round"
-                       class="w-5 h-5">
-                    </i>
-
-                </div>
-
-
-                <div class="text-[10px]
-                            tracking-[2px]
-                            text-[#caa45d]
-                            mb-3">
-
-                    04
-
-                </div>
-
-
-                <h3 class="serif
-                           text-3xl
-                           mb-4">
-
-                    Luxury Rentals
-
-                </h3>
-
-
-                <p class="text-sm
-                          text-gray-500
-                          leading-7">
-
-                    Access premium residences for short,
-                    medium and long-term stays across
-                    India's most sought-after destinations.
-
-                </p>
-
-
-                <a href="#"
-                   class="inline-flex
-                          items-center
-                          gap-2
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-7
-                          hover:text-[#caa45d]
-                          transition">
-
-                    LEARN MORE
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-3 h-3">
-                    </i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- SERVICE 05 -->
-
-            <div data-aos="fade-up"
-                 data-aos-delay="100"
-                 class="service-card
-                        bg-white
-                        border border-[#e5e0d7]
-                        p-9">
-
-                <div class="service-icon
-                            w-14 h-14
-                            rounded-full
-                            border border-[#caa45d]
-                            flex items-center
-                            justify-center
-                            text-[#caa45d]
-                            mb-8">
-
-                    <i data-lucide="building-2"
-                       class="w-5 h-5">
-                    </i>
-
-                </div>
-
-
-                <div class="text-[10px]
-                            tracking-[2px]
-                            text-[#caa45d]
-                            mb-3">
-
-                    05
-
-                </div>
-
-
-                <h3 class="serif
-                           text-3xl
-                           mb-4">
-
-                    Developer Advisory
-
-                </h3>
-
-
-                <p class="text-sm
-                          text-gray-500
-                          leading-7">
-
-                    Support developers with positioning,
-                    market intelligence, sales strategy
-                    and premium project advisory.
-
-                </p>
-
-
-                <a href="#"
-                   class="inline-flex
-                          items-center
-                          gap-2
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-7
-                          hover:text-[#caa45d]
-                          transition">
-
-                    LEARN MORE
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-3 h-3">
-                    </i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- SERVICE 06 -->
-
-            <div data-aos="fade-up"
-                 data-aos-delay="200"
-                 class="service-card
-                        bg-white
-                        border border-[#e5e0d7]
-                        p-9">
-
-                <div class="service-icon
-                            w-14 h-14
-                            rounded-full
-                            border border-[#caa45d]
-                            flex items-center
-                            justify-center
-                            text-[#caa45d]
-                            mb-8">
-
-                    <i data-lucide="briefcase-business"
-                       class="w-5 h-5">
-                    </i>
-
-                </div>
-
-
-                <div class="text-[10px]
-                            tracking-[2px]
-                            text-[#caa45d]
-                            mb-3">
-
-                    06
-
-                </div>
-
-
-                <h3 class="serif
-                           text-3xl
-                           mb-4">
-
-                    Portfolio Management
-
-                </h3>
-
-
-                <p class="text-sm
-                          text-gray-500
-                          leading-7">
-
-                    Build and refine real estate portfolios
-                    with a focus on diversification,
-                    performance and long-term value.
-
-                </p>
-
-
-                <a href="#"
-                   class="inline-flex
-                          items-center
-                          gap-2
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-7
-                          hover:text-[#caa45d]
-                          transition">
-
-                    LEARN MORE
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-3 h-3">
-                    </i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PROCESS
+     OFFICE LOCATIONS MAP / BANNER
 ========================================================= -->
 
 <section class="py-28 bg-white">
@@ -968,7 +497,7 @@
                         tracking-[4px]
                         mb-5">
 
-                OUR PROCESS
+                REGIONAL HUBS
 
             </div>
 
@@ -976,11 +505,11 @@
             <h2 class="serif
                        text-5xl md:text-6xl">
 
-                From Vision
+                Presence Across
                 <br>
 
                 <span class="italic">
-                    To Address.
+                    Key Metros.
                 </span>
 
             </h2>
@@ -994,7 +523,7 @@
                     gap-0">
 
 
-            <!-- STEP -->
+            <!-- HUB 1 -->
 
             <div data-aos="fade-up"
                  class="relative
@@ -1005,35 +534,26 @@
                         border-[#e5e0d7]">
 
                 <div class="serif
-                            text-5xl
+                            text-3xl
                             text-[#caa45d]
-                            mb-5">
+                            mb-3">
 
-                    01
+                    Gurugram
 
                 </div>
-
-                <h3 class="serif
-                           text-2xl
-                           mb-3">
-
-                    Understand
-
-                </h3>
 
                 <p class="text-xs
                           text-gray-500
                           leading-6">
-
-                    We begin by understanding
-                    your goals, preferences
-                    and priorities.
-
+                    DLF Cyber City, Phase 3<br>
+                    National Capital Region
                 </p>
 
             </div>
 
 
+
+            <!-- HUB 2 -->
 
             <div data-aos="fade-up"
                  data-aos-delay="100"
@@ -1045,35 +565,26 @@
                         border-[#e5e0d7]">
 
                 <div class="serif
-                            text-5xl
+                            text-3xl
                             text-[#caa45d]
-                            mb-5">
+                            mb-3">
 
-                    02
+                    Mumbai
 
                 </div>
-
-                <h3 class="serif
-                           text-2xl
-                           mb-3">
-
-                    Curate
-
-                </h3>
 
                 <p class="text-xs
                           text-gray-500
                           leading-6">
-
-                    We shortlist relevant
-                    properties and opportunities
-                    from our network.
-
+                    Bandra Kurla Complex (BKC)<br>
+                    Maharashtra
                 </p>
 
             </div>
 
 
+
+            <!-- HUB 3 -->
 
             <div data-aos="fade-up"
                  data-aos-delay="200"
@@ -1085,35 +596,26 @@
                         border-[#e5e0d7]">
 
                 <div class="serif
-                            text-5xl
+                            text-3xl
                             text-[#caa45d]
-                            mb-5">
+                            mb-3">
 
-                    03
+                    Bengaluru
 
                 </div>
-
-                <h3 class="serif
-                           text-2xl
-                           mb-3">
-
-                    Advise
-
-                </h3>
 
                 <p class="text-xs
                           text-gray-500
                           leading-6">
-
-                    We evaluate opportunities,
-                    negotiate terms and
-                    provide strategic guidance.
-
+                    UB City, Vittal Mallya Road<br>
+                    Karnataka
                 </p>
 
             </div>
 
 
+
+            <!-- HUB 4 -->
 
             <div data-aos="fade-up"
                  data-aos-delay="300"
@@ -1123,258 +625,20 @@
                         py-8">
 
                 <div class="serif
-                            text-5xl
+                            text-3xl
                             text-[#caa45d]
-                            mb-5">
+                            mb-3">
 
-                    04
+                    Goa
 
                 </div>
-
-                <h3 class="serif
-                           text-2xl
-                           mb-3">
-
-                    Complete
-
-                </h3>
 
                 <p class="text-xs
                           text-gray-500
                           leading-6">
-
-                    From documentation to
-                    closure, we stay involved
-                    until the journey is complete.
-
+                    The Boulevard, Panaji<br>
+                    Goa
                 </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SPECIALIST SERVICES
-========================================================= -->
-
-<section class="py-28
-                bg-[#171717]
-                text-white">
-
-    <div class="max-w-[1050px]
-                mx-auto px-6">
-
-
-        <div class="grid
-                    lg:grid-cols-2
-                    gap-20
-                    items-center">
-
-
-            <div data-aos="fade-right">
-
-                <div class="text-[#caa45d]
-                            text-[11px]
-                            tracking-[4px]
-                            mb-5">
-
-                    PRIVATE CLIENT SERVICES
-
-                </div>
-
-
-                <h2 class="serif
-                           text-5xl md:text-6xl
-                           leading-[1]">
-
-                    For Those Who
-                    <br>
-
-                    <span class="italic">
-                        Expect More.
-                    </span>
-
-                </h2>
-
-
-                <p class="text-gray-400
-                          text-sm
-                          leading-7
-                          mt-7
-                          max-w-[500px]">
-
-                    Our private client advisory is designed
-                    for individuals and families seeking
-                    highly personalised real estate guidance
-                    with complete discretion.
-
-                </p>
-
-
-                <a href="#contact"
-                   class="inline-flex
-                          items-center
-                          gap-3
-                          bg-[#caa45d]
-                          text-white
-                          px-7 py-4
-                          rounded-full
-                          text-[10px]
-                          tracking-[1.5px]
-                          mt-8
-                          hover:bg-[#b58e48]
-                          transition">
-
-                    SPEAK WITH AN ADVISOR
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-4 h-4">
-                    </i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- LIST -->
-
-            <div data-aos="fade-left"
-                 class="space-y-0">
-
-
-                <div class="border-t
-                            border-white/10
-                            py-7
-                            flex
-                            items-center
-                            justify-between">
-
-                    <div class="flex gap-5">
-
-                        <i data-lucide="lock-keyhole"
-                           class="w-5 h-5
-                                  text-[#caa45d]">
-                        </i>
-
-                        <span class="serif
-                                     text-2xl">
-
-                            Confidential Search
-
-                        </span>
-
-                    </div>
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-4 h-4
-                              text-gray-500">
-                    </i>
-
-                </div>
-
-
-
-                <div class="border-t
-                            border-white/10
-                            py-7
-                            flex
-                            items-center
-                            justify-between">
-
-                    <div class="flex gap-5">
-
-                        <i data-lucide="map"
-                           class="w-5 h-5
-                                  text-[#caa45d]">
-                        </i>
-
-                        <span class="serif
-                                     text-2xl">
-
-                            Off-Market Opportunities
-
-                        </span>
-
-                    </div>
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-4 h-4
-                              text-gray-500">
-                    </i>
-
-                </div>
-
-
-
-                <div class="border-t
-                            border-white/10
-                            py-7
-                            flex
-                            items-center
-                            justify-between">
-
-                    <div class="flex gap-5">
-
-                        <i data-lucide="users"
-                           class="w-5 h-5
-                                  text-[#caa45d]">
-                        </i>
-
-                        <span class="serif
-                                     text-2xl">
-
-                            Family Office Advisory
-
-                        </span>
-
-                    </div>
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-4 h-4
-                              text-gray-500">
-                    </i>
-
-                </div>
-
-
-
-                <div class="border-t
-                            border-b
-                            border-white/10
-                            py-7
-                            flex
-                            items-center
-                            justify-between">
-
-                    <div class="flex gap-5">
-
-                        <i data-lucide="gem"
-                           class="w-5 h-5
-                                  text-[#caa45d]">
-                        </i>
-
-                        <span class="serif
-                                     text-2xl">
-
-                            Private Portfolio Strategy
-
-                        </span>
-
-                    </div>
-
-                    <i data-lucide="arrow-up-right"
-                       class="w-4 h-4
-                              text-gray-500">
-                    </i>
-
-                </div>
 
             </div>
 
@@ -1409,7 +673,7 @@
                    tracking-[5px]
                    mb-6">
 
-            LET'S TALK PROPERTY
+            EXPERIENCE EXCELLENCE
 
         </div>
 
@@ -1421,11 +685,11 @@
                    text-5xl md:text-7xl
                    leading-none">
 
-            The Right Property
+            Ready to Find Your
             <br>
 
             <span class="italic">
-                Starts With The Right Advice.
+                Next Masterpiece?
             </span>
 
         </h2>
@@ -1441,9 +705,7 @@
                    text-sm
                    leading-7">
 
-            Tell us what you are looking for.
-            Our senior property consultants will
-            help you explore the possibilities.
+            Connect with our senior directors today for a completely personalized portfolio assessment.
 
         </p>
 
@@ -1459,7 +721,7 @@
                    gap-4">
 
 
-            <a href="#"
+            <a href="#contact-form"
                class="bg-[#caa45d]
                       text-white
                       px-8 py-4
@@ -1474,7 +736,7 @@
             </a>
 
 
-            <a href="#"
+            <a href="./properties.html"
                class="border border-[#171717]/30
                       px-8 py-4
                       rounded-full
@@ -1484,7 +746,7 @@
                       hover:text-white
                       transition">
 
-                VIEW PROPERTIES
+                EXPLORE PROPERTIES
 
             </a>
 
@@ -1628,34 +890,34 @@
                             text-sm
                             text-gray-400">
 
-                    <a href="#"
+                    <a href="/"
                        class="block
                               hover:text-white">
                         Home
                     </a>
 
-                    <a href="#"
+                    <a href="./properties.html"
                        class="block
                               hover:text-white">
                         Featured Estates
                     </a>
 
-                    <a href="#"
-                       class="block
-                              hover:text-white">
-                        Buy & Rent Engine
-                    </a>
-
-                    <a href="#"
+                    <a href="./services.html"
                        class="block
                               hover:text-white">
                         Services
                     </a>
 
-                    <a href="#"
+                    <a href="./about.html"
                        class="block
                               hover:text-white">
                         About Us
+                    </a>
+
+                    <a href="./contact.html"
+                       class="block
+                              hover:text-white">
+                        Contact Us
                     </a>
 
                 </div>
@@ -1788,8 +1050,16 @@
 
     });
 
+    /* Contact Form Submission Handler */
+    function handleContactSubmit(e) {
+        e.preventDefault();
+        alert('Thank you. Your inquiry has been submitted successfully. Our senior advisor will contact you shortly.');
+    }
+
 </script>
 
+ <!-- JavaScript to handle mobile navigation toggle -->
+<script type="text/javascript" src="./assets/js/main.js">
 
 </body>
 </html>

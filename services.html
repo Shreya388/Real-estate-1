@@ -42,117 +42,95 @@
             color: white;
         }
 
-        .service-card {
-            transition:
-                transform .5s ease,
-                box-shadow .5s ease,
-                border-color .5s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0,0,0,.08);
-            border-color: #caa45d;
-        }
-
-        .service-card:hover .service-icon {
-            background: #caa45d;
-            color: white;
-            transform: rotate(5deg);
-        }
-
-        .service-icon {
-            transition: all .4s ease;
-        }
-
     </style>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 </head>
 
 
 <body class="bg-[#f8f7f4] text-[#171717]">
 
-
  <!-- =========================================================
      HEADER
 ========================================================= -->
-
 <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#e8e4dc]">
 
-    <div class="max-w-[1100px] mx-auto px-5 lg:px-0 flex items-center justify-between">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-3">
-
-            <div class="w-[36px] h-[36px] rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center">
-                <span class="text-[#caa45d] text-[16px]">♛</span>
+        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#171717] border border-[#caa45d] flex items-center justify-center shrink-0">
+                <span class="text-[#caa45d] text-sm sm:text-base leading-none">♛</span>
             </div>
 
-            <div>
-                <div class="serif text-[22px] tracking-[2px] leading-none">
+            <div class="flex flex-col justify-center">
+                <div class="serif text-lg sm:text-xl lg:text-[22px] tracking-[2px] leading-none text-[#171717]">
                     ELYSIAN
                 </div>
-
-                <div class="text-[8px] tracking-[2px] text-[#caa45d] mt-1">
+                <div class="text-[7px] sm:text-[8px] tracking-[1.5px] sm:tracking-[2px] text-[#caa45d] mt-1 font-medium">
                     ESTATE CONSULTANTS
                 </div>
             </div>
-
         </a>
 
-
         <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[12px] tracking-[1px] font-medium">
+            <a href="/" class="text-[#caa45d] transition-colors">HOME</a>
+            <a href="./properties.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">PROPERTIES</a>
+            <a href="./about.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">ABOUT</a>
+            <a href="./services.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">SERVICES</a>
+            <a href="./contact.html" class="text-[#171717] hover:text-[#caa45d] transition-colors">CONTACT</a>
 
-        <nav class="hidden lg:flex items-center gap-7 py-4 text-[12px] tracking-[1px] font-medium">
+            <!-- Search Button -->
+            <button aria-label="Search" class="p-1 text-[#171717] hover:text-[#caa45d] transition-colors">
+                <i data-lucide="search" class="w-4 h-4"></i>
+            </button>
 
-            <a href="./index.html" class="hover:text-[#caa45d] transition">HOME</a>
-            <a href="./properties.html" class="hover:text-[#caa45d] transition">PROPERTIES</a>
-            <a href="./about.html" class="hover:text-[#caa45d] transition">ABOUT</a>
-            <a href="./services.html" class="text-[#caa45d]">SERVICES</a>
-            <a href="./contact.html" class="hover:text-[#caa45d] transition">CONTACT</a>
-
-            <i data-lucide="search" class="w-4 h-4 ml-2"></i>
-
+            <!-- CTA Button -->
             <a href="#contact"
-               class="bg-[#caa45d] text-white px-5 py-3 rounded-full text-[11px] tracking-[.5px] hover:bg-[#b58e48] transition shadow-sm">
-                SCHEDULE A VISIT
+               class="bg-[#caa45d] text-white px-5 py-2.5 sm:py-3 rounded-full text-[11px] font-semibold tracking-[0.5px] hover:bg-[#b58e48] transition-all shadow-sm shrink-0">
+               SCHEDULE A VISIT
             </a>
-
         </nav>
 
+        <!-- Mobile / Tablet Action & Menu Button -->
+        <div class="flex items-center gap-3 lg:hidden">
+            <button aria-label="Search" class="p-2 text-[#171717] hover:text-[#caa45d] transition-colors">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
 
-        <!-- Mobile Menu -->
-
-        <button id="menuBtn" class="lg:hidden">
-            <i data-lucide="menu"></i>
-        </button>
+            <button id="menuBtn" 
+        aria-label="Toggle Navigation Menu" 
+        aria-expanded="false" 
+        class="p-2 text-[#171717] hover:text-[#caa45d] focus:outline-none transition-colors flex items-center justify-center">
+    <!-- Using inline SVG instead of Lucide to prevent missing icon bugs -->
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+</button>
+        </div>
 
     </div>
 
-
-    <!-- Mobile Navigation -->
-
+    <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu"
-         class="hidden lg:hidden bg-white border-t border-[#eee] px-6 py-6">
+         class="hidden lg:hidden bg-white/98 backdrop-blur-md border-t border-[#e8e4dc] px-6 py-6 shadow-lg transition-all duration-300">
 
-        <div class="flex flex-col gap-5 text-sm tracking-wide">
-
-            <a href="./index.html">HOME</a>
-            <a href="./properties.html" class="text-[#caa45d]">PROPERTIES</a>
-            <a href="./about.html">ABOUT</a>
-            <a href="./services.html">SERVICES</a>
-            <a href="./contact.html">CONTACT</a>
+        <div class="flex flex-col gap-4 text-sm font-medium tracking-wider">
+            <a href="/" class="text-[#caa45d] py-1 border-b border-gray-50">HOME</a>
+            <a href="./properties.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">PROPERTIES</a>
+            <a href="./about.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">ABOUT</a>
+            <a href="./services.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">SERVICES</a>
+            <a href="./contact.html" class="text-[#171717] hover:text-[#caa45d] py-1 border-b border-gray-50 transition-colors">CONTACT</a>
 
             <a href="#contact"
-               class="bg-[#caa45d] text-white text-center py-3 rounded-full">
+               class="bg-[#caa45d] text-white text-center py-3 mt-2 rounded-full font-semibold text-xs tracking-wider hover:bg-[#b58e48] transition-all shadow-sm">
                 SCHEDULE A VISIT
             </a>
-
         </div>
 
     </div>
 
 </header>
-
 
 <!-- =========================================================
      HERO
@@ -1789,6 +1767,8 @@
     });
 
 </script>
+ <!-- JavaScript to handle mobile navigation toggle -->
+<script type="text/javascript" src="./assets/js/main.js">
 
 
 </body>
